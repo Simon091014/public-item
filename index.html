@@ -1,0 +1,1694 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理与教育诊断框架手册</title>
+<style>
+:root {
+  --color-canvas: #FAF8F5;
+  --color-surface: #F0EDE8;
+  --color-surface-alt: #E8E4DD;
+  --color-ink: #2D2D2D;
+  --color-muted: #6B6560;
+  --color-rule: #D4CFC8;
+  --color-primary: #1A7A6D;
+  --color-primary-light: #E6F3F1;
+  --color-primary-dark: #0F5C52;
+  --color-secondary: #C4841D;
+  --color-secondary-light: #FDF3E2;
+  --color-tertiary: #7B5EA7;
+  --color-tertiary-light: #F0EBF5;
+  --color-danger: #B54A3F;
+  --color-danger-light: #FBEAE8;
+  --color-info: #3A7CA5;
+  --color-info-light: #E8F2F8;
+  --font-display: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-body: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --max-width: 960px;
+  --gap-1: 0.5rem;
+  --gap-2: 1rem;
+  --gap-3: 1.5rem;
+  --gap-4: 2.5rem;
+  --gap-5: 4rem;
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Layout --- */
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 0;
+}
+
+nav.toc {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: var(--gap-3) var(--gap-2);
+  border-right: 1px solid var(--color-rule);
+  background: var(--color-surface);
+  font-size: 0.85rem;
+}
+
+nav.toc h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-bottom: var(--gap-2);
+  font-weight: 600;
+}
+
+nav.toc .toc-part {
+  margin-bottom: var(--gap-1);
+}
+
+nav.toc .toc-part-title {
+  font-weight: 600;
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav.toc .toc-part-title .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+nav.toc ul {
+  list-style: none;
+  padding-left: 26px;
+  margin-bottom: var(--gap-1);
+}
+
+nav.toc li a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  display: block;
+  padding: 1px 0;
+  transition: color 0.15s;
+}
+
+nav.toc li a:hover { color: var(--color-primary); }
+nav.toc li a:focus-visible { color: var(--color-primary); outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 2px; }
+a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 2px; }
+
+main {
+  padding: var(--gap-4) var(--gap-4) var(--gap-5);
+  max-width: var(--max-width);
+}
+
+/* --- Typography --- */
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-bottom: var(--gap-1);
+}
+
+h1 .subtitle {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--color-muted);
+  letter-spacing: 0;
+  margin-top: 0.4em;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-top: var(--gap-5);
+  margin-bottom: var(--gap-2);
+  padding-bottom: var(--gap-1);
+  border-bottom: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 .part-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: var(--gap-4);
+  margin-bottom: var(--gap-1);
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  margin-top: var(--gap-2);
+  margin-bottom: var(--gap-1);
+}
+
+p { margin-bottom: var(--gap-2); }
+
+strong { font-weight: 600; }
+
+/* --- Framework Card --- */
+.framework {
+  background: #fff;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius);
+  padding: var(--gap-3);
+  margin: var(--gap-3) 0;
+  position: relative;
+}
+
+.framework-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: var(--gap-2);
+}
+
+.framework-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  padding: 0 6px;
+}
+
+.framework-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.3;
+}
+
+.framework-title .en {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-left: 6px;
+}
+
+.framework-source {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-bottom: var(--gap-2);
+  font-style: italic;
+}
+
+.framework p, .framework li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.framework ul, .framework ol {
+  padding-left: 1.5em;
+  margin-bottom: var(--gap-2);
+}
+
+.framework li {
+  margin-bottom: 4px;
+}
+
+/* --- Steps --- */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: var(--gap-2) 0;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--color-primary);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.step-content {
+  flex: 1;
+  font-size: 0.92rem;
+}
+
+.step-content .step-label {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+/* --- Comparison Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--gap-2) 0;
+  font-size: 0.88rem;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-rule);
+  vertical-align: top;
+}
+
+th {
+  background: var(--color-surface);
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- Callout --- */
+.callout {
+  padding: var(--gap-2) var(--gap-3);
+  border-radius: var(--radius);
+  margin: var(--gap-2) 0;
+  font-size: 0.92rem;
+}
+
+.callout-insight {
+  background: var(--color-primary-light);
+  border-left: 3px solid var(--color-primary);
+}
+
+.callout-warning {
+  background: var(--color-secondary-light);
+  border-left: 3px solid var(--color-secondary);
+}
+
+.callout-key {
+  background: var(--color-tertiary-light);
+  border-left: 3px solid var(--color-tertiary);
+}
+
+.callout strong:first-child {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* --- Integration Map --- */
+.integration-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: var(--gap-3) 0;
+  padding: var(--gap-3);
+  background: #fff;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius);
+}
+
+.flow-stage {
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.flow-arrow {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+.stage-1 { background: var(--color-info-light); color: var(--color-info); }
+.stage-2 { background: var(--color-secondary-light); color: var(--color-secondary); }
+.stage-3 { background: var(--color-tertiary-light); color: var(--color-tertiary); }
+.stage-4 { background: var(--color-primary-light); color: var(--color-primary-dark); }
+.stage-5 { background: var(--color-danger-light); color: var(--color-danger); }
+
+/* --- Tags --- */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.tag-psych { background: var(--color-info-light); color: var(--color-info); }
+.tag-edu { background: var(--color-primary-light); color: var(--color-primary-dark); }
+.tag-parent { background: var(--color-secondary-light); color: var(--color-secondary); }
+.tag-behavior { background: var(--color-tertiary-light); color: var(--color-tertiary); }
+.tag-comm { background: #FDE8E8; color: var(--color-danger); }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .page-wrapper {
+    grid-template-columns: 1fr;
+  }
+  nav.toc {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--color-rule);
+    padding: var(--gap-2);
+  }
+  main {
+    padding: var(--gap-3) var(--gap-2);
+  }
+  .integration-flow {
+    flex-direction: column;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+  table {
+    font-size: 0.82rem;
+  }
+  th, td {
+    padding: 6px 8px;
+  }
+}
+
+@media print {
+  nav.toc { display: none; }
+  .page-wrapper { display: block; }
+  main { max-width: 100%; padding: 0; }
+  .framework { break-inside: avoid; }
+  h2 { break-after: avoid; }
+}
+
+/* --- Quick Ref --- */
+.quick-ref {
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: var(--gap-3);
+  margin: var(--gap-3) 0;
+}
+
+.quick-ref h4 {
+  color: var(--color-primary-dark);
+  margin-top: 0;
+  margin-bottom: var(--gap-1);
+}
+
+.quick-ref ol {
+  padding-left: 1.5em;
+}
+
+.quick-ref li {
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+/* --- Anchor offset --- */
+section[id] {
+  scroll-margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+<nav class="toc">
+  <h2>目录导航</h2>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">1</span>情绪识别</div>
+    <ul>
+      <li><a href="#f1">情绪轮盘 · Plutchik</a></li>
+      <li><a href="#f2">情绪颗粒度 · Barrett</a></li>
+      <li><a href="#f3">情绪智力模型 · Goleman</a></li>
+      <li><a href="#f4">HALT检查</a></li>
+      <li><a href="#f5">全脑教养 · Siegel</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">2</span>情绪处理</div>
+    <ul>
+      <li><a href="#f6">RAIN正念法</a></li>
+      <li><a href="#f7">ACT接纳承诺</a></li>
+      <li><a href="#f8">DBT四大模块</a></li>
+      <li><a href="#f9">EFT情绪聚焦</a></li>
+      <li><a href="#f10">五步情绪处理</a></li>
+      <li><a href="#f11">情绪调节窗口</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">3</span>认知分析</div>
+    <ul>
+      <li><a href="#f12">CBT认知行为</a></li>
+      <li><a href="#f13">ABC理性情绪</a></li>
+      <li><a href="#f14">归因理论 · Weiner</a></li>
+      <li><a href="#f15">心理防御机制</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">4</span>沟通影响</div>
+    <ul>
+      <li><a href="#f16">NVC非暴力沟通</a></li>
+      <li><a href="#f17">Gottman情绪教练</a></li>
+      <li><a href="#f18">NLP逻辑层次</a></li>
+      <li><a href="#f19">SFBT焦点解决</a></li>
+      <li><a href="#f20">PERMA积极心理</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">5</span>教育诊断</div>
+    <ul>
+      <li><a href="#f21">正面管教</a></li>
+      <li><a href="#f22">权威型教养</a></li>
+      <li><a href="#f23">ABC行为分析</a></li>
+      <li><a href="#f24">养育金字塔</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">6</span>行为改变</div>
+    <ul>
+      <li><a href="#f25">SDT自我决定</a></li>
+      <li><a href="#f26">Fogg行为模型</a></li>
+      <li><a href="#f27">跨理论模型</a></li>
+      <li><a href="#f28">习惯循环</a></li>
+    </ul>
+  </div>
+
+  <div class="toc-part">
+    <div class="toc-part-title"><span class="num">7</span>整合应用</div>
+    <ul>
+      <li><a href="#map">框架全景地图</a></li>
+      <li><a href="#flow">实操处理流程</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<h1>心理与教育诊断框架手册
+  <span class="subtitle">28个核心框架 · 从识别到行动的完整操作逻辑</span>
+</h1>
+
+<p style="color:var(--color-muted); margin-bottom:var(--gap-4);">这些框架是心理学、教育学、沟通学中经过验证的思维模型。每一个都提供了一套「诊断问题 → 理解原因 → 采取行动」的逻辑。不需要全部记住，理解它们的共同规律——先识别情绪，再处理情绪，然后分析原因，最后采取行动——就已经能在日常教育场景中受用。</p>
+
+<!-- ============================================ -->
+<!-- PART 1: 情绪识别 -->
+<!-- ============================================ -->
+
+<h2 id="part1"><span class="part-num">1</span>情绪识别框架——先看见，才能处理</h2>
+
+<p>情绪识别是所有后续处理的起点。如果连孩子（或自己）正在经历什么情绪都判断不准，后面的分析、沟通、行动全部会偏。以下框架解决的核心问题：<strong>这是什么情绪？它的强度多大？它从哪里来？</strong></p>
+
+<!-- F1: Plutchik -->
+<section id="f1">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">1</span>
+    <div class="framework-title">情绪轮盘<span class="en">Plutchik's Wheel of Emotions</span></div>
+  </div>
+  <div class="framework-source">Robert Plutchik，进化心理学</div>
+  <p><strong>核心思想：</strong>人类有8种基本情绪（快乐、悲伤、愤怒、恐惧、信任、厌恶、期待、惊讶），所有复杂情绪都是这些基本情绪的组合。就像颜色有原色一样，情绪也有"原色"。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">定位基本情绪：</span>孩子现在的情绪，最接近8种基本情绪中的哪一种？（快乐/悲伤/愤怒/恐惧/信任/厌恶/期待/惊讶）</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">判断强度：</span>这种情绪是轻微的（如烦恼）、中等的（如愤怒）、还是极端的（如暴怒）？同一情绪不同强度，处理方式完全不同。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">识别组合：</span>复杂情绪往往是两种基本情绪的组合。比如"嫉妒"= 愤怒 + 悲伤；"焦虑"= 恐惧 + 期待。找到组合，才能精准命名。</div>
+    </div>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>教育场景用法</strong>
+    不要直接问孩子"你现在什么感觉"（他们往往说不出来）。用情绪轮盘帮他们缩小范围："你现在是更像生气，还是更像难过？"——先二分，再细化。
+  </div>
+</div>
+</section>
+
+<!-- F2: Barrett -->
+<section id="f2">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">2</span>
+    <div class="framework-title">情绪颗粒度<span class="en">Emotional Granularity — Lisa Feldman Barrett</span></div>
+  </div>
+  <div class="framework-source">Lisa Feldman Barrett，《How Emotions Are Made》</div>
+  <p><strong>核心思想：</strong>情绪不是天生的固定反应，而是大脑根据身体信号 + 过往经验 + 当前情境"建构"出来的。一个人能用来描述情绪的词汇越丰富、越精确（即"情绪颗粒度"越高），他的情绪调节能力就越强。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">扩展情绪词汇：</span>把"不开心"拆成更精确的词——失望、委屈、无聊、疲惫、焦虑、沮丧、无助、尴尬。词汇越精确，大脑越能"定向处理"。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">注意身体信号：</span>每种情绪都有身体信号。愤怒可能是胸口发热，焦虑可能是胃部紧缩，悲伤可能是喉咙发紧。帮孩子建立"身体信号 → 情绪名称"的映射。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">结合情境解读：</span>同一身体信号在不同情境下可能是不同情绪。心跳加速可能是紧张，也可能是兴奋——需要结合具体情境判断。</div>
+    </div>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>教育场景用法</strong>
+    日常帮孩子积累情绪词汇。不要只说"你生气了"，而是说"你看起来有点失望，是因为期待的事情没发生吗？"——这就是在帮孩子提高情绪颗粒度。
+  </div>
+</div>
+</section>
+
+<!-- F3: Goleman -->
+<section id="f3">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">3</span>
+    <div class="framework-title">情绪智力模型<span class="en">Emotional Intelligence — Daniel Goleman</span></div>
+  </div>
+  <div class="framework-source">Daniel Goleman，《Emotional Intelligence》</div>
+  <p><strong>核心思想：</strong>情绪智力（EQ）不是一个笼统的能力，而是由5个可拆解、可训练的维度组成。一个人的EQ问题可能只在某一个维度上。</p>
+
+  <table>
+    <tr><th>维度</th><th>含义</th><th>孩子身上的典型表现</th></tr>
+    <tr><td><strong>自我觉察</strong></td><td>知道自己正在经历什么情绪</td><td>"我知道我现在很生气"</td></tr>
+    <tr><td><strong>自我调节</strong></td><td>能控制冲动，不让情绪绑架行为</td><td>生气时能深呼吸而不是摔东西</td></tr>
+    <tr><td><strong>内在动机</strong></td><td>有自驱力，不完全依赖外部奖惩</td><td>愿意为长期目标延迟满足</td></tr>
+    <tr><td><strong>同理心</strong></td><td>能感知和理解他人的情绪</td><td>看到同学难过会主动关心</td></tr>
+    <tr><td><strong>社交技能</strong></td><td>能管理关系、处理冲突、有效沟通</td><td>能和同伴协商解决分歧</td></tr>
+  </table>
+
+  <div class="callout callout-key">
+    <strong>诊断价值</strong>
+    当一个孩子"情绪管理有问题"时，先用这5个维度做诊断：是不知道自己在生气（自我觉察不足）？还是知道但控制不住（自我调节不足）？还是能控制但不理解别人（同理心不足）？不同维度对应不同的训练方向。
+  </div>
+</div>
+</section>
+
+<!-- F4: HALT -->
+<section id="f4">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">4</span>
+    <div class="framework-title">HALT生理状态检查</div>
+  </div>
+  <div class="framework-source">戒瘾康复领域的经典工具，广泛用于教育场景</div>
+  <p><strong>核心思想：</strong>很多"情绪问题"和"行为问题"的根源不在心理层面，而在生理层面。在处理任何情绪或行为问题之前，先排除这四个生理因素。</p>
+
+  <table>
+    <tr><th>字母</th><th>英文</th><th>中文</th><th>典型表现</th></tr>
+    <tr><td><strong>H</strong></td><td>Hungry</td><td>饿了</td><td>注意力涣散、易怒、情绪波动大</td></tr>
+    <tr><td><strong>A</strong></td><td>Angry</td><td>怒了</td><td>已有未处理的情绪在积累</td></tr>
+    <tr><td><strong>L</strong></td><td>Lonely</td><td>孤了</td><td>缺乏连接感、觉得自己被忽视</td></tr>
+    <tr><td><strong>T</strong></td><td>Tired</td><td>累了</td><td>睡眠不足、过度疲劳、精力耗尽</td></tr>
+  </table>
+
+  <div class="callout callout-warning">
+    <strong>这是第一步，不是最后一步</strong>
+    很多家长一上来就分析孩子"为什么学习态度不好"，但孩子可能只是没睡好或者饿了。HALT是最快速的排查工具——先排除生理因素，再进入心理分析。
+  </div>
+</div>
+</section>
+
+<!-- F5: Siegel -->
+<section id="f5">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">5</span>
+    <div class="framework-title">全脑教养<span class="en">The Whole-Brain Child — Daniel Siegel & Tina Payne Bryson</span></div>
+  </div>
+  <div class="framework-source">Daniel Siegel，神经科学家</div>
+  <p><strong>核心思想：</strong>大脑有多个"楼层"，孩子的很多情绪崩溃不是"不听话"，而是大脑发育未成熟导致的。理解大脑的工作方式，才能理解孩子的行为。</p>
+
+  <h3>核心概念</h3>
+  <ul>
+    <li><strong> upstairs vs downstairs brain（楼上脑 vs 楼下脑）：</strong>"楼下脑"（脑干、杏仁核）负责本能反应——战斗、逃跑、僵住。"楼上脑"（前额叶皮层）负责理性思考、情绪调节、同理心。孩子的楼上脑要到25岁左右才完全成熟。</li>
+    <li><strong>flip the lid（掀翻盖子）：</strong>当情绪过于强烈时，"楼下脑"劫持了"楼上脑"，理性思考完全离线。这时候讲道理无效——因为孩子的大脑物理上无法接收逻辑信息。</li>
+    <li><strong>left brain vs right brain（左脑 vs 右脑）：</strong>左脑管逻辑和语言，右脑管情感和画面。孩子情绪崩溃时通常是右脑主导。需要先连接右脑（情感共鸣），再引导左脑（逻辑分析）。</li>
+  </ul>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">判断大脑状态：</span>孩子现在是在"楼上脑"状态（可以讲道理）还是"掀翻盖子"状态（楼下脑接管，讲道理无效）？</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">先连接右脑：</span>如果孩子已经"掀翻盖子"，先不要讲道理。用共情、拥抱、镜像情绪来连接右脑——"你现在很生气，我知道。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">再引导左脑：</span>等孩子平静下来（右脑被安抚后），再用逻辑和语言引导左脑——"我们来看看刚才发生了什么？"</div>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <strong>核心原则：Connect then Redirect（先连接，再引导）</strong>
+    这条原则贯穿所有教育场景。孩子情绪上头时，任何道理都进不去。先连接情感，等"楼上脑"重新上线，再讲道理。
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 2: 情绪处理 -->
+<!-- ============================================ -->
+
+<h2 id="part2"><span class="part-num">2</span>情绪处理框架——识别之后，怎么消化</h2>
+
+<p>识别了情绪之后，下一步是处理它。这些框架提供的是"情绪来了之后怎么和它相处"的操作流程。共同规律：<strong>不压制、不逃避、先接纳、再行动。</strong></p>
+
+<!-- F6: RAIN -->
+<section id="f6">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">6</span>
+    <div class="framework-title">RAIN正念四步法</div>
+  </div>
+  <div class="framework-source"> Tara Brach，整合佛教正念与西方心理学</div>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">R</span>
+      <div class="step-content"><span class="step-label">Recognize（识别）：</span>注意到正在发生什么。"我现在感到愤怒"——不评判，只是觉察。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">A</span>
+      <div class="step-content"><span class="step-label">Allow（允许）：</span>允许这种情绪存在，不试图压制或改变它。"愤怒在这里，我允许它在。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">I</span>
+      <div class="step-content"><span class="step-label">Investigate（探究）：</span>带着好奇心向内看——这个情绪在身体哪里？它想告诉我什么？它背后有什么需求？</div>
+    </div>
+    <div class="step">
+      <span class="step-num">N</span>
+      <div class="step-content"><span class="step-label">Non-identification（不认同）：</span>我是有愤怒的人，但我不是愤怒本身。情绪是流经我的体验，不是我。</div>
+    </div>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>适用场景</strong>
+    适合已经有一定自我觉察能力的孩子（小学高年级以上）。可以简化为四步问自己："我现在怎么了？→ 我允许它在 → 它想告诉我什么？→ 它不代表我。"
+  </div>
+</div>
+</section>
+
+<!-- F7: ACT -->
+<section id="f7">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">7</span>
+    <div class="framework-title">ACT接纳承诺疗法<span class="en">Acceptance and Commitment Therapy</span></div>
+  </div>
+  <div class="framework-source">Steven Hayes，第三浪潮认知行为疗法</div>
+  <p><strong>核心理念：</strong>不是消灭负面情绪，而是改变和负面情绪的关系。痛苦不可避免，但我们可以选择带着痛苦去做有价值的事。</p>
+
+  <h3>六边形 proces 模型（Hexaflex）</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">接纳（Acceptance）：</span>主动为不想要的想法和感受腾出空间，不与之对抗。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">认知解离（Cognitive Defusion）：</span>学会"看着"想法而不是"被想法带着走"。把"我太差了"变成"我注意到我有一个'我很差'的想法"。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">活在当下（Present Moment）：</span>有意识地关注此时此地，不困在过去或焦虑未来。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">观察性自我（Self-as-Context）：</span>我是"观察者"，我的想法和情绪是"被观察的对象"。我不等于我的想法。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">5</span>
+      <div class="step-content"><span class="step-label">价值观（Values）：</span>什么对我真正重要？我想成为什么样的人？这是方向，不是目标。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">6</span>
+      <div class="step-content"><span class="step-label">承诺行动（Committed Action）：</span>基于价值观，采取具体的、可执行的行动步骤。</div>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <strong>教育场景用法</strong>
+    ACT的逻辑特别适合学习场景：孩子考砸了→不必消灭沮丧（接纳）→"我考得很差"只是想法不是事实（解离）→什么对我重要？我想进步（价值观）→那我现在能做什么具体的事？（承诺行动）。
+  </div>
+</div>
+</section>
+
+<!-- F8: DBT -->
+<section id="f8">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">8</span>
+    <div class="framework-title">DBT辩证行为疗法<span class="en">Dialectical Behavior Therapy</span></div>
+  </div>
+  <div class="framework-source">Marsha Linehan，原用于情绪调节障碍</div>
+  <p><strong>核心理念：</strong>接受和改变并不矛盾——"我已经做得最好了，同时我需要做得更好。"这四大模块可以单独使用，也可以组合。</p>
+
+  <table>
+    <tr><th>模块</th><th>核心技能</th><th>教育场景应用</th></tr>
+    <tr>
+      <td><strong>正念</strong></td>
+      <td>观察、描述、参与；不评判；一次做一件事</td>
+      <td>帮孩子学会" noticing "——注意到自己在生气，而不是被生气带着走</td>
+    </tr>
+    <tr>
+      <td><strong>痛苦承受</strong></td>
+      <td>TIPP（温度/运动/呼吸/肌肉放松）；分散注意力；自我安抚；彻底接受</td>
+      <td>孩子情绪崩溃时的"急救工具包"——冷水洗脸、剧烈运动、深呼吸</td>
+    </tr>
+    <tr>
+      <td><strong>情绪调节</strong></td>
+      <td>命名情绪；检查事实；相反行动；减少脆弱性</td>
+      <td>当孩子的情绪反应和事实不匹配时，用"检查事实"校准</td>
+    </tr>
+    <tr>
+      <td><strong>人际效能</strong></td>
+      <td>DEAR MAN（表达需求）；GIVE（维护关系）；FAST（维护自尊）</td>
+      <td>教孩子如何表达自己的需求而不失控，如何在冲突中不丢失自我</td>
+    </tr>
+  </table>
+</div>
+</section>
+
+<!-- F9: EFT -->
+<section id="f9">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">9</span>
+    <div class="framework-title">EFT情绪聚焦疗法<span class="en">Emotion-Focused Therapy</span></div>
+  </div>
+  <div class="framework-source">Leslie Greenberg</div>
+  <p><strong>核心思想：</strong>情绪本身不是问题，问题是"情绪没有完成它的旅程"。每种情绪都有一个天然的适应过程——被感受、被表达、被理解，然后自然转化。压制情绪等于阻断这个过程。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">觉察（Awareness）：</span>帮助来访者/孩子意识到自己正在体验什么情绪。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">表达（Expression）：</span>提供一个安全的环境，让情绪被表达出来——说出来、写出来、画出来。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">调节（Regulation）：</span>学会和情绪共处，不被它淹没，也不逃避它。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">转化（Transformation）：</span>"只有用情绪才能改变情绪"——用适应性情绪（如悲伤、愤怒）去转化非适应性情绪（如羞耻、恐惧）。例如：对不公平的愤怒可以转化被压抑的羞耻感。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- F10: Five-Step -->
+<section id="f10">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">10</span>
+    <div class="framework-title">五步情绪处理流程</div>
+  </div>
+  <div class="framework-source">整合多个流派的通用框架</div>
+  <p>将上述框架的共同规律提炼为最简洁的五步操作：</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">觉察（Notice）：</span>我注意到有情绪正在升起。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">命名（Name it）：</span>给情绪一个精确的名字——"这是焦虑"、"这是委屈"。神经科学研究表明，仅仅是命名情绪就能降低杏仁核的激活水平。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">接纳（Accept）：</span>允许它存在。不评判，不压制。"有这个情绪是正常的。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">探究（Explore）：</span>它想告诉我什么？背后有什么需求没被满足？触发它的是什么？</div>
+    </div>
+    <div class="step">
+      <span class="step-num">5</span>
+      <div class="step-content"><span class="step-label">选择行动（Choose）：</span>基于价值观和需求，选择一个建设性的行动——而不是被情绪推着做出冲动反应。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- F11: Window of Tolerance -->
+<section id="f11">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">11</span>
+    <div class="framework-title">情绪调节窗口<span class="en">Window of Tolerance — Dan Siegel</span></div>
+  </div>
+  <div class="framework-source">Daniel Siegel，神经生物学家</div>
+  <p><strong>核心思想：</strong>每个人都有一个"情绪调节窗口"——在这个窗口内，你能正常思考、感受、做出理性决策。超出窗口，就会进入两种极端状态。</p>
+
+  <table>
+    <tr><th>状态</th><th>表现</th><th>孩子可能这样</th></tr>
+    <tr>
+      <td><strong>过度激活（Hyperarousal）</strong></td>
+      <td>窗口上方——战或跑</td>
+      <td>暴怒、尖叫、摔东西、攻击性行为、极度焦虑</td>
+    </tr>
+    <tr>
+      <td><strong>最佳唤醒区（Window）</strong></td>
+      <td>窗口内——理性在线</td>
+      <td>能听讲、能讨论、能思考、能合作</td>
+    </tr>
+    <tr>
+      <td><strong>低度激活（Hypoarousal）</strong></td>
+      <td>窗口下方——僵住/关机</td>
+      <td>发呆、拒绝沟通、"随便""无所谓"、完全无反应</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-key">
+    <strong>核心应用</strong>
+    教育的目标不是消除情绪，而是<strong>扩大孩子的调节窗口</strong>。当孩子已经超出窗口（过度激活或低度激活），任何教育都无效——必须先帮他回到窗口内（通过运动、呼吸、安抚等），再进入教育模式。
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 3: 认知分析 -->
+<!-- ============================================ -->
+
+<h2 id="part3"><span class="part-num">3</span>认知分析框架——情绪的背后是什么想法</h2>
+
+<p>情绪不是凭空产生的，它背后有认知（想法/信念/归因）。这些框架帮助我们从"表面的情绪"进入"底层的想法"，找到问题的真正根源。</p>
+
+<!-- F12: CBT -->
+<section id="f12">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">12</span>
+    <div class="framework-title">CBT认知行为疗法<span class="en">Cognitive Behavioral Therapy</span></div>
+  </div>
+  <div class="framework-source">Aaron Beck</div>
+  <p><strong>核心模型：认知三角</strong>——想法（Thought）→ 情绪（Emotion）→ 行为（Behavior），三者相互影响，形成循环。改变任何一个，其他两个都会跟着变。</p>
+
+  <h3>十种常见认知扭曲</h3>
+  <table>
+    <tr><th>扭曲类型</th><th>含义</th><th>孩子的典型表现</th></tr>
+    <tr><td><strong>非黑即白</strong></td><td>只有完美和失败，没有中间地带</td><td>"考不到90分我就是废物"</td></tr>
+    <tr><td><strong>灾难化</strong></td><td>把小事放大成灾难</td><td>"这次考砸了，中考完了"</td></tr>
+    <tr><td><strong>过度概括</strong></td><td>一次失败推导出永远失败</td><td>"我就是学不好数学"</td></tr>
+    <tr><td><strong>心理过滤</strong></td><td>只关注负面，忽略正面</td><td>10题对9题，只盯着错的那题</td></tr>
+    <tr><td><strong>读心术</strong></td><td>自以为知道别人在想什么</td><td>"老师肯定觉得我很笨"</td></tr>
+    <tr><td><strong>算命式思维</strong></td><td>预言事情一定会变糟</td><td>"再怎么努力也没用的"</td></tr>
+    <tr><td><strong>个人化</strong></td><td>把不是自己的责任揽到自己身上</td><td>"爸妈吵架都是因为我不听话"</td></tr>
+    <tr><td><strong>应该思维</strong></td><td>用"应该/必须"要求自己或他人</td><td>"我不应该犯这种错误"</td></tr>
+    <tr><td><strong>贴标签</strong></td><td>用固定标签定义自己或他人</td><td>"我就是个笨蛋"</td></tr>
+    <tr><td><strong>情绪化推理</strong></td><td>因为我感觉如此，所以一定是真的</td><td>"我觉得自己很差，所以我确实很差"</td></tr>
+  </table>
+
+  <div class="callout callout-insight">
+    <strong>教育场景用法</strong>
+    当孩子说"我学不好了"，不要急着安慰"你可以的"。先用CBT的思路帮他检查想法：这是事实还是想法？有没有证据支持？有没有反面的证据？能不能换一个更准确的说法？——这就是在教孩子识别和修正认知扭曲。
+  </div>
+</div>
+</section>
+
+<!-- F13: ABC -->
+<section id="f13">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">13</span>
+    <div class="framework-title">ABC理性情绪模型<span class="en">ABC Model — Albert Ellis</span></div>
+  </div>
+  <div class="framework-source">Albert Ellis，理性情绪行为疗法（REBT）创始人</div>
+  <p><strong>核心思想：</strong>不是事件（A）导致了情绪后果（C），而是我们对事件的信念（B）导致了情绪后果。同一个事件，不同信念 → 完全不同的情绪和行为。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">A</span>
+      <div class="step-content"><span class="step-label">Activating Event（触发事件）：</span>客观发生了什么？只描述事实，不加评判。例如："这次考试考了65分。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">B</span>
+      <div class="step-content"><span class="step-label">Belief（信念/想法）：</span>我对这件事怎么想的？"我太笨了，永远考不好"（非理性信念）vs"这次没发挥好，我找到问题所在下次改进"（理性信念）。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">C</span>
+      <div class="step-content"><span class="step-label">Consequence（后果）：</span>这个想法导致了什么情绪和行为？非理性信念 → 绝望 + 放弃；理性信念 → 遗憾 + 行动。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">D</span>
+      <div class="step-content"><span class="step-label">Dispute（辩驳）：</span>挑战非理性信念——"我真的很笨吗？有没有证据？是不是以偏概全了？"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">E</span>
+      <div class="step-content"><span class="step-label">Effective New Belief（有效的新信念）：</span>建立更合理的新想法——"一次考试不代表什么，我可以针对性改进。"</div>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <strong>与CBT的关系</strong>
+    ABC模型是CBT的"精简版"。CBT更全面，ABC更适合日常快速使用。核心洞察相同：<strong>改变想法就能改变情绪。</strong>
+  </div>
+</div>
+</section>
+
+<!-- F14: Attribution -->
+<section id="f14">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">14</span>
+    <div class="framework-title">归因理论<span class="en">Attribution Theory — Bernard Weiner</span></div>
+  </div>
+  <div class="framework-source">Bernard Weiner，教育心理学</div>
+  <p><strong>核心思想：</strong>孩子怎么解释"成功"和"失败"，直接决定他后续的学习动机。归因方式是可以教的。</p>
+
+  <table>
+    <tr><th>归因维度</th><th>含义</th><th>积极归因</th><th>消极归因</th></tr>
+    <tr>
+      <td><strong>内部 vs 外部</strong></td>
+      <td>原因是自己的还是环境的？</td>
+      <td>"是我的努力决定的"</td>
+      <td>"是运气/老师的问题"</td>
+    </tr>
+    <tr>
+      <td><strong>稳定 vs 不稳定</strong></td>
+      <td>这个原因会一直这样吗？</td>
+      <td>"努力程度我可以随时改变"</td>
+      <td>"我就是笨（永远改不了）"</td>
+    </tr>
+    <tr>
+      <td><strong>可控 vs 不可控</strong></td>
+      <td>我能控制这个原因吗？</td>
+      <td>"方法不对，我可以换方法"</td>
+      <td>"题目太难了（我控制不了）"</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-warning">
+    <strong>最危险的归因模式</strong>
+    把失败归因为<strong>内部的 + 稳定的 + 不可控的</strong>（"我就是笨"），这叫"习得性无助"——孩子会彻底放弃努力。<br>
+    <strong>最健康的归因模式：</strong>失败归因为<strong>内部的 + 不稳定的 + 可控的</strong>（"我这次方法不对/努力不够"），这样孩子会认为"我可以改变"。
+  </div>
+</div>
+</section>
+
+<!-- F15: Defense -->
+<section id="f15">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">15</span>
+    <div class="framework-title">心理防御机制<span class="en">Defense Mechanisms</span></div>
+  </div>
+  <div class="framework-source">Sigmund Freud / Anna Freud</div>
+  <p><strong>核心思想：</strong>当人面对无法承受的情绪或现实时，心理会自动启动"防御程序"来保护自己。这些防御机制本身不是病态的，但如果一个人长期依赖某种防御模式，就会阻碍成长。</p>
+
+  <table>
+    <tr><th>防御机制</th><th>表现</th><th>孩子身上的例子</th></tr>
+    <tr><td><strong>否认</strong></td><td>拒绝承认现实</td><td>"我没考砸，是题目有问题"</td></tr>
+    <tr><td><strong>投射</strong></td><td>把自己的感受归到别人身上</td><td>"老师针对我"（实际是自己不自信）</td></tr>
+    <tr><td><strong>合理化</strong></td><td>给不合理的行为找合理借口</td><td>"反正中考也不考这个，不学也罢"</td></tr>
+    <tr><td><strong>退行</strong></td><td>退回更幼稚的行为模式</td><td>压力大时突然变得像小孩一样粘人</td></tr>
+    <tr><td><strong>转移</strong></td><td>把对A的情绪发泄到B身上</td><td>在学校受气回家对父母发火</td></tr>
+    <tr><td><strong>升华</strong></td><td>把负面情绪转化为建设性行为</td><td>心情不好时去跑步/写作（最健康的防御）</td></tr>
+  </table>
+
+  <div class="callout callout-insight">
+    <strong>诊断价值</strong>
+    当孩子反复出现不合理的行为反应时，先判断他在用哪种防御机制。识别出防御机制，就能看到他真正在回避什么——那个被回避的东西才是真正需要处理的。
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 4: 沟通与关系 -->
+<!-- ============================================ -->
+
+<h2 id="part4"><span class="part-num">4</span>沟通与关系框架——怎么和孩子说话才有效</h2>
+
+<p>前面的框架帮你理解问题和处理情绪。这一部分的框架解决的是：<strong>如何用正确的方式和孩子沟通、建立关系、施加影响。</strong>再好的教育理念，如果沟通方式不对，也到不了孩子心里。</p>
+
+<!-- F16: NVC -->
+<section id="f16">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">16</span>
+    <div class="framework-title">NVC非暴力沟通<span class="en">Nonviolent Communication — Marshall Rosenberg</div>
+  </div>
+  <div class="framework-source">Marshall Rosenberg</div>
+  <p><strong>核心思想：</strong>所有行为都是为了满足某种需求。冲突不来自需求本身，而来自满足需求的策略冲突。用"观察-感受-需要-请求"四步替代指责和评判。</p>
+
+  <h3>四步操作</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">观察（Observation）：</span>描述事实，不加评判。❌"你又不做作业" → ✅"我看到你今天还没开始写作业。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">感受（Feeling）：</span>表达感受，不是想法。❌"我觉得你不听话"（这是评判）→ ✅"我有点担心"（这是感受）。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">需要（Need）：</span>说明背后的需求。❌"你应该好好学习" → ✅"因为我希望你能养成良好的学习习惯。"</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">请求（Request）：</span>提出具体、可执行的请求（不是命令）。❌"你要努力" → ✅"你愿意现在花10分钟先把数学订正做完吗？"</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- F17: Gottman -->
+<section id="f17">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">17</span>
+    <div class="framework-title">Gottman情绪教练五步法<span class="en">Emotion Coaching — John Gottman</div></div>
+  <div class="framework-source">John Gottman，基于对家庭的长期追踪研究</div>
+  <p><strong>核心思想：</strong>孩子的情绪时刻不是"问题"，而是"教育机会"。Gottman发现父母有四种类型：忽视型、否定型、放任型、教练型。只有教练型培养出的孩子情绪调节能力最强。</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">觉察情绪：</span>注意到孩子的情绪（哪怕是微弱的信号）。不忽视、不跳过。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">视为机会：</span>把情绪时刻看作亲近和教育的机会，而不是需要解决的麻烦。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">共情倾听：</span>不评判、不建议、不否定。用"嗯""听起来你很难过"来回应，帮孩子感到被理解。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">命名情绪：</span>帮孩子给情绪一个名字——"你感到很失望对吗？""你是不是有点委屈？"（这就是在提高情绪颗粒度）</div>
+    </div>
+    <div class="step">
+      <span class="step-num">5</span>
+      <div class="step-content"><span class="step-label">设定界限 + 引导解决：</span>情绪全接纳，行为有边界。"你可以生气，但不可以打人。我们来想想，下次遇到这种情况可以怎么做？"</div>
+    </div>
+  </div>
+
+  <div class="callout callout-key">
+    <strong>关键顺序不可颠倒</strong>
+    必须先完成前4步（觉察→视为机会→共情→命名），再进入第5步（界限和解决）。很多家长跳过了前面的步骤直接到"你不应该这样""你应该这样做"——孩子根本听不进去。
+  </div>
+</div>
+</section>
+
+<!-- F18: NLP -->
+<section id="f18">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">18</span>
+    <div class="framework-title">NLP逻辑层次<span class="en">Neuro-Linguistic Programming Logical Levels — Robert Dilts</div></div>
+  <div class="framework-source">Robert Dilts，基于Gregory Bateson的学习层次理论</div>
+  <p><strong>核心思想：</strong>人的改变发生在六个层次上。低层次的问题在高层次才能找到解决方案。反过来，高层次的改变会自动向下影响低层次。</p>
+
+  <table>
+    <tr><th>层次</th><th>核心问题</th><th>例子</th></tr>
+    <tr><td><strong>环境</strong></td><td>在哪里？什么时候？</td><td>"教室太吵了学不进去"</td></tr>
+    <tr><td><strong>行为</strong></td><td>做了什么？</td><td>"我今天没完成作业"</td></tr>
+    <tr><td><strong>能力</strong></td><td>怎么做到？有什么策略？</td><td>"我不知道怎么高效记单词"</td></tr>
+    <tr><td><strong>信念/价值观</strong></td><td>为什么重要？什么是对的？</td><td>"我觉得学英语没用"</td></tr>
+    <tr><td><strong>身份</strong></td><td>我是谁？</td><td>"我不是学习的料"</td></tr>
+    <tr><td><strong>使命</strong></td><td>为了谁？为了什么？</td><td>"我想成为能让家人骄傲的人"</td></tr>
+  </table>
+
+  <div class="callout callout-insight">
+    <strong>诊断价值</strong>
+    孩子"不学习"，原因可能在任何一个层次上。如果问题出在"信念"层次（觉得学习没用），你在"行为"层次（逼他写作业）发力，效果微乎其微。<strong>先判断问题在哪个层次，在问题所在的那个层次或更高层次去解决。</strong>
+  </div>
+</div>
+</section>
+
+<!-- F19: SFBT -->
+<section id="f19">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">19</span>
+    <div class="framework-title">SFBT焦点解决短期治疗<span class="en">Solution-Focused Brief Therapy</span></div>
+  </div>
+  <div class="framework-source">Steve de Shazer & Insoo Kim Berg</div>
+  <p><strong>核心思想：</strong>不深挖问题原因，直接聚焦解决方案。不问"为什么这样"，问"什么时候不这样"和"你想要什么"。</p>
+
+  <h3>核心技术</h3>
+  <ul>
+    <li><strong>奇迹提问：</strong>"如果明天早上醒来，你的问题消失了，你做的第一件事会是什么？"——帮孩子描述理想状态，让目标具体化。</li>
+    <li><strong>例外提问：</strong>"有没有什么时候这个问题不那么严重？那时你做了什么不一样的事？"——找到已经有效的做法，放大它。</li>
+    <li><strong>量尺提问：</strong>"如果10分是你想要的状态，1分是最差的，你现在在几分？从3分到4分，你可以做的一小步是什么？"——把大目标变成可操作的一小步。</li>
+    <li><strong>应对提问：</strong>"情况这么难，你是怎么撑到现在的？"——帮孩子看到自己的力量。</li>
+  </ul>
+
+  <div class="callout callout-insight">
+    <strong>适用场景</strong>
+    特别适合不愿意"被分析"的孩子（青春期尤其有效）。不问他"为什么做不好"，而是问他"你什么时候做得还不错？你做了什么？"——让孩子自己发现答案。
+  </div>
+</div>
+</section>
+
+<!-- F20: PERMA -->
+<section id="f20">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">20</span>
+    <div class="framework-title">PERMA积极心理模型<span class="en">Martin Seligman</span></div>
+  </div>
+  <div class="framework-source">Martin Seligman，积极心理学之父</div>
+  <p><strong>核心思想：</strong>幸福不是"没有问题"，而是五个维度的积极状态同时发展。当一个人某方面出问题时，检查是不是某个维度的"营养"不够。</p>
+
+  <table>
+    <tr><th>维度</th><th>含义</th><th>教育场景</th></tr>
+    <tr><td><strong>P</strong> — Positive Emotion</td><td>积极情绪</td><td>学习过程中有没有成就感、乐趣？</td></tr>
+    <tr><td><strong>E</strong> — Engagement</td><td>投入/心流</td><td>有没有让他完全沉浸的事情？</td></tr>
+    <tr><td><strong>R</strong> — Relationships</td><td>关系</td><td>和老师/同学/家长的关系怎么样？</td></tr>
+    <tr><td><strong>M</strong> — Meaning</td><td>意义感</td><td>他知道学习是为了什么吗？</td></tr>
+    <tr><td><strong>A</strong> — Achievement</td><td>成就感</td><td>有没有可以庆祝的小胜利？</td></tr>
+  </table>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 5: 教育诊断 -->
+<!-- ============================================ -->
+
+<h2 id="part5"><span class="part-num">5</span>教育诊断框架——理解孩子的行为</h2>
+
+<p>这些框架是专门为教育场景设计的。当你面对孩子的具体行为问题时，这些框架帮你快速定位"他为什么这样做"以及"我该怎么回应"。</p>
+
+<!-- F21: Positive Discipline -->
+<section id="f21">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">21</span>
+    <div class="framework-title">正面管教<span class="en">Positive Discipline — Jane Nelsen</span></div>
+  </div>
+  <div class="framework-source">Jane Nelsen，基于Alfred Adler个体心理学</div>
+  <p><strong>核心思想：</strong>孩子的每个"不良行为"背后，都有一个被错误满足的"归属需求"。不是孩子"坏"，而是他用错了策略来获得归属感和价值感。</p>
+
+  <h3>行为背后的四个错误目标</h3>
+  <table>
+    <tr><th>错误目标</th><th>孩子的潜台词</th><th>家长的感受</th><th>正确回应</th></tr>
+    <tr>
+      <td><strong>寻求关注</strong></td>
+      <td>"只有你注意我时，我才有价值"</td>
+      <td>烦躁、被纠缠</td>
+      <td>在孩子表现好时主动给关注，而非只在出问题时反应</td>
+    </tr>
+    <tr>
+      <td><strong>争夺权力</strong></td>
+      <td>"只有我说了算，我才有价值"</td>
+      <td>被挑战、愤怒</td>
+      <td>退出权力斗争，提供有限选择，让孩子参与决策</td>
+    </tr>
+    <tr>
+      <td><strong>报复</strong></td>
+      <td>"我受伤了，所以我也要让你受伤"</td>
+      <td>受伤、失望</td>
+      <td>不反击，先修复关系，理解孩子受伤的根源</td>
+    </tr>
+    <tr>
+      <td><strong>自暴自弃</strong></td>
+      <td>"我不行，别对我抱有期望"</td>
+      <td>无助、放弃</td>
+      <td>发现微小优势，创造成功体验，停止批评</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-key">
+    <strong>核心原则：和善而坚定</strong>
+    和善 = 尊重孩子的感受和需求；坚定 = 坚持必要的规则和界限。不是二选一，而是同时做到。
+  </div>
+</div>
+</section>
+
+<!-- F22: Baumrind -->
+<section id="f22">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">22</span>
+    <div class="framework-title">权威型教养模型<span class="en">Baumrind's Parenting Styles</span></div>
+  </div>
+  <div class="framework-source">Diana Baumrind</div>
+  <p><strong>核心思想：</strong>教养方式由两个维度决定——温暖度（回应性）和要求度（ demandingness）。四个象限对应四种教养风格，研究一致表明"权威型"效果最好。</p>
+
+  <table>
+    <tr><th></th><th>高要求</th><th>低要求</th></tr>
+    <tr>
+      <td><strong>高温暖</strong></td>
+      <td><strong>权威型（最佳）</strong><br>有规则也有爱，解释原因，尊重自主</td>
+      <td><strong>溺爱型</strong><br>有爱但没规则，孩子缺乏边界感</td>
+    </tr>
+    <tr>
+      <td><strong>低温暖</strong></td>
+      <td><strong>专制型</strong><br>有规则但没爱，服从为先，不解释原因</td>
+      <td><strong>忽视型</strong><br>既没爱也没规则，孩子自生自灭</td>
+    </tr>
+  </table>
+</div>
+</section>
+
+<!-- F23: ABC Behavior -->
+<section id="f23">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">23</span>
+    <div class="framework-title">ABC行为分析<span class="en">Antecedent-Behavior-Consequence</span></div>
+  </div>
+  <div class="framework-source">应用行为分析（ABA），行为心理学</div>
+  <p><strong>核心思想：</strong>行为不是随机发生的。每个行为都有前因（触发条件）和后果（维持因素）。要改变行为，不是直接对行为下手，而是改变前因和后果。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">A</span>
+      <div class="step-content"><span class="step-label">Antecedent（前因）：</span>行为发生之前发生了什么？什么触发了它？时间、地点、人物、事件？——<strong>改变前因可以减少问题行为的发生。</strong></div>
+    </div>
+    <div class="step">
+      <span class="step-num">B</span>
+      <div class="step-content"><span class="step-label">Behavior（行为）：</span>具体发生了什么行为？要描述到可观察、可测量的程度。不是"态度不好"，而是"把书摔在桌上并说'我不学了'"。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">C</span>
+      <div class="step-content"><span class="step-label">Consequence（后果）：</span>行为发生后得到了什么？——他人的反应、获得的关注、逃避了不想做的事？<strong>后果决定了这个行为会不会再次出现。</strong></div>
+    </div>
+  </div>
+
+  <div class="callout callout-insight">
+    <strong>教育场景用法</strong>
+    孩子一做作业就发脾气（行为）。分析前因：通常是什么时候？（放学后累了？）分析后果：发脾气之后发生了什么？（不用做了？得到关注了？）——找到模式后，改变前因（先休息30分钟再做）或改变后果（发脾气不能逃避，但完成后有奖励）。
+  </div>
+</div>
+</section>
+
+<!-- F24: Parenting Pyramid -->
+<section id="f24">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">24</span>
+    <div class="framework-title">养育金字塔<span class="en">The Incredible Years Parenting Pyramid</span></div>
+  </div>
+  <div class="framework-source">Carolyn Webster-Stratton</div>
+  <p><strong>核心思想：</strong>应对孩子的行为问题，不是直接跳到"惩罚/后果"层面，而是要从金字塔底层开始建设。底层越厚实，上层需要使用的频率越低。</p>
+
+  <table>
+    <tr><th>层级</th><th>内容</th><th>投入占比</th></tr>
+    <tr>
+      <td><strong>第1层（底层）</strong></td>
+      <td>建立安全的亲子依恋，满足基本需求，给予积极关注</td>
+      <td>最多时间</td>
+    </tr>
+    <tr>
+      <td><strong>第2层</strong></td>
+      <td>教孩子社交技能和情绪管理能力</td>
+      <td>较多时间</td>
+    </tr>
+    <tr>
+      <td><strong>第3层</strong></td>
+      <td>设定清晰的界限和规则，提前约定</td>
+      <td>适度时间</td>
+    </tr>
+    <tr>
+      <td><strong>第4层</strong></td>
+      <td>对问题行为的温和后果（自然后果/逻辑后果）</td>
+      <td>少量时间</td>
+    </tr>
+    <tr>
+      <td><strong>第5层（顶层）</strong></td>
+      <td>更严格的行为管理计划</td>
+      <td>极少时间</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-warning">
+    <strong>最常见的错误</strong>
+    大多数家长直接跳到第4-5层（惩罚、后果），却忽略了1-3层的建设。金字塔底层不扎实时，惩罚越多问题越多。
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 6: 行为改变 -->
+<!-- ============================================ -->
+
+<h2 id="part6"><span class="part-num">6</span>行为改变框架——从"知道"到"做到"</h2>
+
+<p>诊断了问题、处理了情绪、沟通到位了，最后一步是<strong>推动改变</strong>。这些框架解决的核心问题：怎么让一个人（孩子或自己）真正开始行动并坚持下去？</p>
+
+<!-- F25: SDT -->
+<section id="f25">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">25</span>
+    <div class="framework-title">SDT自我决定理论<span class="en">Self-Determination Theory — Deci & Ryan</span></div>
+  </div>
+  <div class="framework-source">Edward Deci & Richard Ryan</div>
+  <p><strong>核心思想：</strong>内在动机来自三个基本心理需求的满足。当这三个需求被满足时，人自然有动力。当它们被挫败时，再多的外部奖惩也维持不了长期行为。</p>
+
+  <table>
+    <tr><th>需求</th><th>含义</th><th>满足方式</th><th>挫败表现</th></tr>
+    <tr>
+      <td><strong>自主性（Autonomy）</strong></td>
+      <td>感觉"这是我自己的选择"</td>
+      <td>提供选择、解释原因、尊重节奏</td>
+      <td>"都是被逼的""不是我自己想做的"</td>
+    </tr>
+    <tr>
+      <td><strong>胜任感（Competence）</strong></td>
+      <td>感觉"我能做到"</td>
+      <td>合理难度、及时正反馈、看见进步</td>
+      <td>"我怎么努力都不行""我就是学不好"</td>
+    </tr>
+    <tr>
+      <td><strong>关联感（Relatedness）</strong></td>
+      <td>感觉"有人在乎我、理解我"</td>
+      <td>共情倾听、陪伴、不评判的接纳</td>
+      <td>"没人在乎我""他们只关心成绩"</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-key">
+    <strong>这是"内驱力"的底层机制</strong>
+    很多家长问"怎么激发孩子的内驱力"——答案不是"打鸡血""讲道理"，而是检查这三个需求有没有被满足。自主性被剥夺（什么都被安排）、胜任感被摧毁（总被否定）、关联感缺失（感觉不被理解）——这三个缺任何一个，内驱力都不会有。
+  </div>
+</div>
+</section>
+
+<!-- F26: Fogg -->
+<section id="f26">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">26</span>
+    <div class="framework-title">Fogg行为模型<span class="en">B = MAP — BJ Fogg</span></div>
+  </div>
+  <div class="framework-source">BJ Fogg，斯坦福行为设计学</div>
+  <p><strong>核心公式：B = MAP</strong><br>
+  行为（Behavior）= 动机（Motivation）× 能力（Ability）× 提示（Prompt）<br>
+  三个要素必须同时出现，行为才会发生。缺任何一个，行为就不会产生。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">M</span>
+      <div class="step-content"><span class="step-label">动机（Motivation）：</span>他想做吗？动机有高低波动，不可依赖。如果动机低，先通过SDT的三个需求来提升。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">A</span>
+      <div class="step-content"><span class="step-label">能力（Ability）：</span>他能做到吗？让行为足够简单。"每天学习3小时"不如"每天打开书看5分钟"。降低门槛，提高成功率。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">P</span>
+      <div class="step-content"><span class="step-label">提示（Prompt）：</span>有没有提醒他做这件事的触发点？把新行为锚定到已有习惯上——"吃完晚饭后立刻坐到书桌前"。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- F27: TTM -->
+<section id="f27">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">27</span>
+    <div class="framework-title">跨理论模型（行为改变五阶段）<span class="en">Transtheoretical Model — Prochaska & DiClemente</span></div>
+  </div>
+  <div class="framework-source">Prochaska & DiClemente</div>
+  <p><strong>核心思想：</strong>行为改变不是一个决定，而是一个过程。人必须经过五个阶段，每个阶段需要不同的策略。在对的阶段用对的策略，才能推动改变。</p>
+
+  <table>
+    <tr><th>阶段</th><th>心理状态</th><th>你应该做什么</th><th>不该做什么</th></tr>
+    <tr>
+      <td><strong>前 contemplation</strong><br>（没想过要改）</td>
+      <td>"我没什么问题"</td>
+      <td>提供信息，引发思考，不施压</td>
+      <td>直接要求他改变——他会抗拒</td>
+    </tr>
+    <tr>
+      <td><strong> contemplation</strong><br>（在考虑）</td>
+      <td>"也许我应该...但..."</td>
+      <td>帮他权衡利弊，减少恐惧</td>
+      <td>催他立刻行动</td>
+    </tr>
+    <tr>
+      <td><strong>Preparation</strong><br>（在准备）</td>
+      <td>"我打算开始..."</td>
+      <td>帮他制定具体计划，降低门槛</td>
+      <td>替他做计划</td>
+    </tr>
+    <tr>
+      <td><strong>Action</strong><br>（在行动）</td>
+      <td>"我正在做！"</td>
+      <td>支持、鼓励、帮他克服障碍</td>
+      <td>增加额外要求</td>
+    </tr>
+    <tr>
+      <td><strong>Maintenance</strong><br>（在维持）</td>
+      <td>"我已经坚持了一段时间"</td>
+      <td>帮他识别风险、预防复退</td>
+      <td>以为万事大吉不再关注</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-insight">
+    <strong>最常见的错误</strong>
+    孩子还在"前沉思"阶段（没觉得自己有问题），家长已经在"行动"阶段施压了。结果就是：越推越抗拒。<strong>先判断孩子在哪个阶段，用那个阶段的策略。</strong>
+  </div>
+</div>
+</section>
+
+<!-- F28: Habit Loop -->
+<section id="f28">
+<div class="framework">
+  <div class="framework-header">
+    <span class="framework-badge">28</span>
+    <div class="framework-title">习惯循环<span class="en">Habit Loop — Charles Duhigg / BJ Fogg</span></div>
+  </div>
+  <div class="framework-source">Charles Duhigg《The Power of Habit》+ BJ Fogg《Tiny Habits》</div>
+  <p><strong>核心模型：</strong>习惯由三个环节组成——提示（Cue）→ 行为（Routine）→ 奖赏（Reward）。要改变一个习惯，不是压制它，而是用新的行为替换旧的行为，保持提示和奖赏不变。</p>
+
+  <h3>操作步骤</h3>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div class="step-content"><span class="step-label">识别提示：</span>触发这个行为的线索是什么？（时间、地点、情绪状态、 preceding事件、身边的人？）</div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div class="step-content"><span class="step-label">识别奖赏：</span>这个行为满足了什么需求？（放松、逃避、关注、成就感？）</div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div class="step-content"><span class="step-label">替换行为：</span>保持同样的提示和奖赏，用一个更好的行为替换旧行为。例如：提示（做作业累了）→ 旧行为（刷手机）→ 新行为（起来活动5分钟）→ 同样的奖赏（放松）。</div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div class="step-content"><span class="step-label">缩小新行为：</span>把新行为做到小到不可能失败——"每天只做一道题""每天只读一页书"。BJ Fogg叫它"Tiny Habits"。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PART 7: 整合 -->
+<!-- ============================================ -->
+
+<h2 id="part7"><span class="part-num">7</span>整合应用</h2>
+
+<section id="map">
+<h3>框架全景地图：所有框架的关联</h3>
+
+<p>28个框架看似分散，但它们的底层逻辑是一致的。按处理问题的先后顺序，可以归入五个阶段：</p>
+
+<div class="integration-flow">
+  <div class="flow-stage stage-1">
+    <strong>① 觉察</strong><br>
+    <span style="font-size:0.8rem">识别情绪、命名情绪、<br>检查生理状态</span>
+  </div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-stage stage-2">
+    <strong>② 接纳</strong><br>
+    <span style="font-size:0.8rem">允许情绪存在、<br>共情连接、不评判</span>
+  </div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-stage stage-3">
+    <strong>③ 理解</strong><br>
+    <span style="font-size:0.8rem">分析认知扭曲、<br>找到深层需求</span>
+  </div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-stage stage-4">
+    <strong>④ 行动</strong><br>
+    <span style="font-size:0.8rem">设定界限、<br>引导解决问题</span>
+  </div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-stage stage-5">
+    <strong>⑤ 持续</strong><br>
+    <span style="font-size:0.8rem">建立习惯、<br>维持改变</span>
+  </div>
+</div>
+
+<table>
+  <tr><th>阶段</th><th>对应框架</th><th>核心动作</th></tr>
+  <tr>
+    <td><strong>① 觉察</strong></td>
+    <td>Plutchik情绪轮盘、Barrett情绪颗粒度、Goleman EQ模型、HALT检查、Siegel全脑教养、情绪调节窗口</td>
+    <td>看到情绪、命名情绪、检查身体、判断大脑状态</td>
+  </tr>
+  <tr>
+    <td><strong>② 接纳</strong></td>
+    <td>RAIN正念法、ACT接纳承诺、DBT正念/痛苦承受模块、EFT情绪聚焦、Gottman情绪教练（前4步）、五步情绪处理</td>
+    <td>允许情绪存在、共情连接、不评判不压制</td>
+  </tr>
+  <tr>
+    <td><strong>③ 理解</strong></td>
+    <td>CBT认知行为、ABC理性情绪、归因理论、防御机制、NVC非暴力沟通、NLP逻辑层次、PERMA、正面管教四个错误目标</td>
+    <td>找到认知扭曲、识别深层需求、定位问题层次</td>
+  </tr>
+  <tr>
+    <td><strong>④ 行动</strong></td>
+    <td>SFBT焦点解决、权威型教养、ABC行为分析、养育金字塔、Fogg行为模型、SDT自我决定、跨理论模型</td>
+    <td>设定界限、制定计划、推动改变</td>
+  </tr>
+  <tr>
+    <td><strong>⑤ 持续</strong></td>
+    <td>习惯循环、SDT自我决定、DBT情绪调节、Gottman情绪教练</td>
+    <td>建立习惯、预防复退、长期建设</td>
+  </tr>
+</table>
+</section>
+
+<section id="flow">
+<h3>实操处理流程：遇到问题时怎么用</h3>
+
+<p>当你面对孩子的问题（情绪崩溃、行为问题、学习困难等），按以下流程走：</p>
+
+<div class="quick-ref">
+  <h3>快速参考：问题解决七步法</h3>
+  <ol>
+    <li><strong>先检查生理状态（HALT）</strong>——饿了？累了？有未处理的情绪？缺睡眠？先解决生理层面。</li>
+    <li><strong>判断大脑状态（全脑教养）</strong>——孩子在"楼上脑"还是"掀翻盖子"？如果是后者，先不教育，先安抚。</li>
+    <li><strong>识别和命名情绪（情绪轮盘 + 情绪颗粒度）</strong>——这是什么情绪？强度多大？帮孩子给它一个名字。</li>
+    <li><strong>共情连接（Gottman情绪教练 / NVC）</strong>——先连接右脑，让孩子感到被理解。不评判、不建议、不否定。</li>
+    <li><strong>分析原因（CBT/ABC + 归因理论 + NLP逻辑层次）</strong>——等孩子平静后，一起分析：是什么想法导致了这个情绪？归因方式对不对？问题在哪个层次？</li>
+    <li><strong>引导行动（SFBT + Fogg + 正面管教）</strong>——不问"为什么这样"，问"你想要什么""一小步可以做什么"。把行动拆到小到不可能失败。</li>
+    <li><strong>建立持续机制（习惯循环 + SDT + 养育金字塔）</strong>——帮孩子建立好习惯的提示-行为-奖赏循环，同时确保自主性、胜任感、关联感三个基本需求持续被满足。</li>
+  </ol>
+</div>
+
+<div class="callout callout-key" style="margin-top:var(--gap-3)">
+  <strong>记住这个核心顺序</strong>
+  <p style="margin-bottom:0"><strong>HALT → 判断大脑 → 识别情绪 → 共情连接 → 分析原因 → 引导行动 → 建立习惯</strong><br><br>
+  每一步都有对应的框架工具。不需要每次都用全部框架——根据孩子的情况，选择合适的框架组合即可。但顺序不要乱：<strong>先处理情绪，再处理问题</strong>；先连接关系，再传递道理。</p>
+</div>
+
+</section>
+
+<footer style="margin-top:var(--gap-5); padding-top:var(--gap-3); border-top:1px solid var(--color-rule); text-align:center; color:var(--color-muted); font-size:0.82rem;">
+  <p>顺·行者学苑 · 2026年8月</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+// 页内导航平滑滚动
+document.querySelectorAll('nav.toc a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
