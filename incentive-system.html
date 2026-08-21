@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>顺·行者学苑 · 成长营激励系统积分对照表</title>
+<style>
+:root{
+  --bg:#F7F8FF;
+  --card:#FFFFFF;
+  --ink:#1F2433;
+  --muted:#5A6174;
+  --primary:#5B6CFF;
+  --primary-soft:#EEF0FF;
+  --yellow:#FFD166;
+  --yellow-soft:#FFF6DF;
+  --pink:#FF7AB6;
+  --pink-soft:#FFEDF5;
+  --green:#55C59D;
+  --green-soft:#E8F8F1;
+  --red:#E2555A;
+  --red-soft:#FDEBEC;
+  --orange:#F2994A;
+  --orange-soft:#FDF1E4;
+  --purple:#9B6BFF;
+  --purple-soft:#F2EDFF;
+  --line:#E5E8F5;
+  --radius:14px;
+  --shadow:0 4px 18px rgba(91,108,255,.08);
+  --gray:#9AA0B0;
+  --gray-soft:#F2F3F7;
+  --blue:#4A9EFF;
+  --blue-soft:#EAF3FF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Inter","Nunito","Avenir Rounded","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:15px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
+a{color:var(--primary);overflow-wrap:anywhere}
+header.hero{
+  background:linear-gradient(135deg,#5B6CFF 0%,#7A86FF 60%,#9B6BFF 100%);
+  color:#fff;border-radius:22px;padding:34px 30px 28px;margin-bottom:22px;
+  position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-40px;top:-60px;width:220px;height:220px;
+  background:rgba(255,255,255,.12);border-radius:50%;
+}
+.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+.hero p{margin:0;font-size:15px;opacity:.94;max-width:680px}
+.hero .badge{
+  display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+  padding:3px 12px;border-radius:999px;font-size:13px;margin-top:12px;
+}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 26px}
+.kpi{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;border:1px solid var(--line)}
+.kpi b{display:block;font-size:21px;color:var(--primary);margin-bottom:2px}
+.kpi span{font-size:13px;color:var(--muted)}
+nav.toc{
+  position:sticky;top:10px;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:var(--radius);padding:10px 14px;margin-bottom:26px;
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+nav.toc a{
+  text-decoration:none;font-size:13.5px;padding:5px 11px;border-radius:999px;color:var(--ink);
+  background:var(--gray-soft);transition:background .15s,color .15s;
+}
+nav.toc a:hover,nav.toc a:focus{background:var(--primary);color:#fff;outline:none}
+a:focus-visible,nav.toc a:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+section{margin:0 0 34px}
+h2{
+  font-size:21px;margin:0 0 14px;padding:8px 0 8px 14px;border-left:6px solid var(--primary);
+  display:flex;align-items:center;gap:10px;
+}
+h2 .tag{font-size:12px;background:var(--primary-soft);color:var(--primary);padding:2px 10px;border-radius:999px;font-weight:600}
+h3{font-size:16.5px;margin:22px 0 10px;color:var(--ink)}
+.lead{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px}
+.note{
+  background:var(--yellow-soft);border:1px solid #F5D78E;border-radius:12px;padding:12px 16px;
+  font-size:14px;margin:14px 0;color:#6B5310;
+}
+.note b{color:#8a6d12}
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.rule .num{
+  display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;
+  background:var(--primary);color:#fff;font-weight:700;margin-bottom:8px;
+}
+.rule b{display:block;margin-bottom:4px}
+.rule p{margin:0;font-size:13.5px;color:var(--muted)}
+table{
+  width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);
+  overflow:hidden;border:1px solid var(--line);font-size:14px;
+}
+caption{
+  text-align:left;font-weight:700;font-size:15px;padding:12px 16px;background:var(--primary-soft);
+  color:var(--primary);border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;
+}
+th,td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{background:#FAFBFF;font-size:13px;color:var(--muted);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:center;white-space:nowrap;font-weight:700}
+tr.pos td:last-child{color:#1E8E6B}
+tr.neg td:last-child{color:#C43D42}
+.tag-pill{display:inline-block;font-size:12px;padding:1px 9px;border-radius:999px;font-weight:600}
+.tp-basic{background:var(--green-soft);color:#1E8E6B}
+.tp-grow{background:var(--blue-soft);color:#2F7FD6}
+.tp-mile{background:var(--purple-soft);color:#7A4FE0}
+.tp-redline{background:var(--red-soft);color:#C43D42}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+.legend i{font-style:normal;display:inline-flex;align-items:center;gap:5px}
+.legend .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+/* 等级阶梯 */
+.levels{display:grid;gap:14px}
+.level{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden;
+  display:grid;grid-template-columns:120px 1fr;box-shadow:var(--shadow);
+}
+.level .lv-head{padding:16px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.level .lv-head b{font-size:19px}
+.level .lv-head span{font-size:12.5px;opacity:.92}
+.level .lv-body{padding:14px 18px;font-size:14px}
+.level .lv-body .thr{font-size:13px;color:var(--muted);margin-top:6px}
+.lv0 .lv-head{background:#9AA0B0}
+.lv1 .lv-head{background:#4A9EFF}
+.lv2 .lv-head{background:#55C59D}
+.lv3 .lv-head{background:#9B6BFF}
+.lv4 .lv-head{background:#F2994A}
+.lv5 .lv-head{background:#E2555A}
+.lv-thr{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.lv-thr span{font-size:12px;background:var(--gray-soft);padding:2px 9px;border-radius:999px;color:var(--muted)}
+/* 勋章 */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.badge-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow)}
+.badge-card .icon{font-size:30px;display:block;margin-bottom:6px}
+.badge-card b{font-size:14.5px;display:block}
+.badge-card span{font-size:12px;color:var(--muted);display:block;margin-top:4px}
+/* 兑换 */
+.redeem{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.r-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.r-item .price{font-size:20px;font-weight:800;color:var(--primary)}
+.r-item .price small{font-size:12.5px;color:var(--muted);font-weight:600}
+.r-item b{font-size:15px}
+.r-item span{font-size:13px;color:var(--muted)}
+.r-item .lv{font-size:12px;background:var(--yellow-soft);color:#8a6d12;padding:2px 10px;border-radius:999px;align-self:flex-start}
+/* 结算节奏 */
+.steps{counter-reset:step;display:grid;gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow);display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start}
+.step .when{font-weight:800;color:var(--primary);font-size:15px;padding-top:2px}
+.step .what{font-size:14px}
+.step .what b{display:block}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center}
+footer b{color:var(--primary)}
+/* 打印 */
+@media print{
+  nav.toc,.kpis{display:none}
+  body{background:#fff}
+  .card,.level,.badge-card,.r-item,.step,table{box-shadow:none}
+  section{break-inside:avoid-page}
+  a{color:inherit}
+}
+@media (max-width:640px){
+  .level,.step{grid-template-columns:1fr}
+  .hero h1{font-size:21px}
+  body{font-size:14.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main id="main">
+<header class="hero">
+  <span class="badge">顺·行者学苑 · 成长营</span>
+  <h1>成长营激励系统 · 积分对照表</h1>
+  <p>积分有标准、扣分有依据、等级看得见。孩子看一眼就知道——今天怎么做能加分、怎么做会被提醒，走到哪一步能成为谁。</p>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>10 积分</b><span>= 1 元奖品价值</span></div>
+  <div class="kpi"><b>每月 1 次</b><span>集中兑换，可跨月累计</span></div>
+  <div class="kpi"><b>每天 5~10 分</b><span>认真完成常态任务可攒</span></div>
+  <div class="kpi"><b>单日封顶 20</b><span>防刷分，攒多靠坚持</span></div>
+  <div class="kpi"><b>只加不减</b><span>扣分只扣当天，不碰累计</span></div>
+</div>
+
+<nav class="toc" aria-label="页面导航">
+  <a href="#how">怎么玩</a>
+  <a href="#rules">三条铁规则</a>
+  <a href="#plus">加分对照表</a>
+  <a href="#minus">扣分对照表</a>
+  <a href="#levels">成长等级</a>
+  <a href="#badges">勋章墙</a>
+  <a href="#redeem">兑换商店</a>
+  <a href="#rhythm">结算节奏</a>
+</nav>
+
+<section id="how">
+  <h2>一、怎么玩 <span class="tag">先看这里</span></h2>
+  <p class="lead">这套体系分两笔账，各管各的，孩子不会混：</p>
+  <div class="rule-grid">
+    <div class="rule">
+      <div class="num">1</div>
+      <b>复盘红包（每天发）</b>
+      <p>每日复盘<b>合格</b>，奖励 <b>1 元红包</b>；做了但不合格，不惩不奖（0 元）；<b>没做</b>，罚 1 元红包（从自己零花钱里出）。这是「保习惯」的底薪。</p>
+      <p style="margin-top:8px">复盘时，把<b>今天做得好的地方主动说出来</b>——练觉察、练自我肯定，比多拿几分更重要。</p>
+    </div>
+    <div class="rule">
+      <div class="num">2</div>
+      <b>积分（每月兑）</b>
+      <p>所有任务按下方对照表加减积分，<b>10 积分 = 1 元</b>，每月集中兑换一次，可跨月累计。这是「引方向」的奖金。</p>
+    </div>
+    <div class="rule">
+      <div class="num">3</div>
+      <b>等级与勋章（长期存）</b>
+      <p>成长值<b>只涨不跌</b>，对应 L0~L5 六大称号，升级当众授勋。每升一级，解锁<b>新勋章 + 神秘礼包</b>（小 / 中 / 大 / 特大 / 豪华）。这是「养内驱」的荣誉。</p>
+    </div>
+  </div>
+  <div class="note">
+    认真复盘，每天 1 元红包到手；把每一件事做好，积分攒起来换奖品；一直坚持下去，就能一路升级、拿勋章、拆神秘礼包。方向清清楚楚——不是为了奖励才去凑指标。
+  </div>
+</section>
+
+<section id="rules">
+  <h2>二、三条铁规则 <span class="tag">说了算数</span></h2>
+  <div class="rule-grid">
+    <div class="rule">
+      <div class="num">1</div>
+      <b>积分是方向标，不是目的</b>
+      <p>每笔加分扣分都在告诉孩子「往哪走」，不是为了攒分而迎合指标。懂为什么做，比拿多少分更重要。</p>
+    </div>
+    <div class="rule">
+      <div class="num">2</div>
+      <b>诚实第一</b>
+      <p>抄作业、AI 代答、谎报成果是最重红线，扣分最狠，且必须单独约谈。</p>
+    </div>
+    <div class="rule">
+      <div class="num">3</div>
+      <b>规则上墙，不临时变</b>
+      <p>加减分标准提前公示，孩子随时可查；教练不随口加码、不临时改规则。答应的奖品按时兑现。</p>
+    </div>
+  </div>
+  <div class="note">
+    <b>扣分口径统一：</b>教练只从三方面提醒扣当天分——<b>复盘质量</b>（流水账/漏填）、<b>作业</b>（应付/代做）、<b>错题</b>（搁置/乱堆）。扣分只抵消「当天净得」，不碰已攒积分，当天最低 0 分，孩子不会「破罐破摔」。每周还有 1 张免扣券（身体不适/家庭突发可抵 1 次）。
+  </div>
+</section>
+
+<section id="plus">
+  <h2>三、加分对照表 <span class="tag">29 项</span></h2>
+  <p class="lead">积分有标准：做到哪一条、加多少分，全部白纸黑字。分三档——<b>基础分</b>做到就给（保底）、<b>成长分</b>进步才有（引方向）、<b>里程碑分</b>稳得住才发（树盼头）。</p>
+
+  <div class="scroll">
+  <table>
+    <caption>A. 基础分 · 每日习惯（做到就给，教练登记）</caption>
+    <thead>
+      <tr><th style="width:70px">维度</th><th>行为</th><th>标准（清晰可核对）</th><th class="num" style="width:90px">积分</th></tr>
+    </thead>
+    <tbody>
+      <tr class="pos"><td>复盘</td><td>完成每日复盘</td><td>「做对 / 卡点 / 明日只改一事」三问都认真写</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>复盘</td><td>复盘有质量</td><td>不是流水账：有具体数据、写出卡在哪一步、明天具体改什么（教练判定）</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>专注</td><td>有效番茄钟</td><td>20 分钟专注无中断，1 个 +1，一天最多算 4 个</td><td class="num">+1/个</td></tr>
+      <tr class="pos"><td>错题</td><td>昨日错题重算</td><td>昨日错题今天不看答案重做到对，1 题 +1，一天最多 2 题</td><td class="num">+1/题</td></tr>
+      <tr class="pos"><td>错题</td><td>错题贴标签</td><td>当日错题全部贴 A/B/C/D 分类标签</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>错题</td><td>五步闭环</td><td>一道错题走完五步（定性 / 查源 / 重做 / 总结 / 延伸）</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>作业</td><td>作业按时交</td><td>全对 + 按时提交 + 卷面干净</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>预习</td><td>预习到位</td><td>课前完成预习，并列出至少 1 个疑问点</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>提问</td><td>主动提问</td><td>带着「我卡在第几步」的具体问题来问教练</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>输出</td><td>费曼输出</td><td>把一道题讲给教练 / 同伴听，对方听懂</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>阅读</td><td>坚持阅读</td><td>阅读 ≥ 20 分钟并打卡</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>状态</td><td>状态达标</td><td>睡眠 ≥ 8h / 正经早餐 / 运动 ≥ 30min / 情绪自评，4 项达标</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>书写</td><td>书写工整</td><td>字迹清晰、卷面无涂改乱划</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>协作</td><td>帮助同伴</td><td>主动帮同伴解题 / 完成小组任务</td><td class="num">+1</td></tr>
+      <tr class="pos"><td>思考</td><td>一题多解</td><td>主动给出第二种解法</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>挑战</td><td>认领挑战任务</td><td>主动接下教练给的额外挑战任务并完成</td><td class="num">+2</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="legend"><i><span class="dot" style="background:var(--green)"></span>常态认真一天：复盘 2+2、番茄 1~2、错题 1、作业 2、预习 1，一天约 <b>8~10 分</b>，落在每天 5~10 的目标区间。</i></div>
+
+  <div class="scroll">
+  <table>
+    <caption>B. 成长分 · 进步才有（有提升才给，教练判定）</caption>
+    <thead>
+      <tr><th style="width:70px">指标</th><th>触发条件（清晰可核对）</th><th class="num" style="width:90px">积分</th></tr>
+    </thead>
+    <tbody>
+      <tr class="pos"><td>稳住心神</td><td>今日专注中断次数比过去 3 天平均少 1 次</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>更上一层</td><td>有效番茄数比上周同一天多 1 个</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>专注破线</td><td>专注时长 ÷ 总时长 ≥ 60%</td><td class="num">+3</td></tr>
+      <tr class="pos"><td>错题清零</td><td>同一道错题 24h / 3 天 / 同类三连回炉全做对</td><td class="num">+3</td></tr>
+      <tr class="pos"><td>问到点上</td><td>提问同时包含「卡在第几步 + 我试过什么 + 我猜原因」</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>讲通为止</td><td>费曼输出后同伴能复述关键步骤</td><td class="num">+2</td></tr>
+      <tr class="pos"><td>稳步登阶</td><td>错因次数 / 回炉正确率 / 粗心失分占比，任一项进步 5 分或 5%</td><td class="num">+5</td></tr>
+      <tr class="pos"><td>周周兑现</td><td>本周三件事完成率 ≥ 80%</td><td class="num">+3</td></tr>
+      <tr class="pos"><td>迈向卓越</td><td>重大进步里程碑（如连续 14 天不断档、名次 / A+ 达成），教练评审</td><td class="num">+10</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="legend"><i><span class="dot" style="background:var(--blue)"></span>同一天同一指标多次触发，只按最高一档记 1 次，避免刷分。</i></div>
+
+  <div class="scroll">
+  <table>
+    <caption>C. 里程碑分 · 稳得住才发（连续达标自动结算）</caption>
+    <thead>
+      <tr><th style="width:70px">里程碑</th><th>触发条件</th><th class="num" style="width:90px">积分</th></tr>
+    </thead>
+    <tbody>
+      <tr class="pos"><td>连续 7 天</td><td>复盘 + 作业 + 错题闭环全部达标</td><td class="num">+10</td></tr>
+      <tr class="pos"><td>连续 15 天</td><td>同上，再稳一周</td><td class="num">+20</td></tr>
+      <tr class="pos"><td>连续 30 天</td><td>一个月不破功</td><td class="num">+40</td></tr>
+      <tr class="pos"><td>半年不退步</td><td>综合指标区间稳定 6 个月不回落</td><td class="num">+100</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="minus">
+  <h2>四、扣分对照表 <span class="tag">17 项</span></h2>
+  <p class="lead">扣分不是惩罚，是让规则被看见。教练从复盘质量、作业、错题三方面提醒，<b>只扣当天、不碰累计</b>；涉及底线的红线行为单独处理。</p>
+  <div class="scroll">
+  <table>
+    <caption>扣分项 · 教练提醒，只抵消当天净得（当天最低 0 分）</caption>
+    <thead>
+      <tr><th style="width:70px">维度</th><th>行为</th><th>标准（清晰可核对）</th><th class="num" style="width:90px">扣分</th></tr>
+    </thead>
+    <tbody>
+      <tr class="neg"><td>复盘</td><td>复盘流水账</td><td>5 分钟敷衍写完、无实质内容</td><td class="num">-3</td></tr>
+      <tr class="neg"><td>复盘</td><td>复盘漏填</td><td>三问缺项 / 没写全</td><td class="num">-2</td></tr>
+      <tr class="neg"><td>作业</td><td>作业应付</td><td>漏做 / 少做 / 应付了事</td><td class="num">-3</td></tr>
+      <tr class="neg"><td>作业 <span class="tag-pill tp-redline">红线</span></td><td>作业代做</td><td>抄作业 / AI 代答 / 家长代写，发现即扣并单独约谈</td><td class="num">-8</td></tr>
+      <tr class="neg"><td>错题</td><td>错题搁置</td><td>昨日错题今天没处理</td><td class="num">-2</td></tr>
+      <tr class="neg"><td>错题</td><td>错题乱堆</td><td>当日错题没贴 A/B/C/D 标签</td><td class="num">-1</td></tr>
+      <tr class="neg"><td>专注</td><td>番茄中断</td><td>一个番茄内打断 ≥ 1 分钟</td><td class="num">作废</td></tr>
+      <tr class="neg"><td>抗扰</td><td>学习区玩手机</td><td>抽查发现使用手机</td><td class="num">-3</td></tr>
+      <tr class="neg"><td>出勤</td><td>迟到</td><td>迟到超过 10 分钟</td><td class="num">-2</td></tr>
+      <tr class="neg"><td>预习</td><td>预习缺失</td><td>没做预习、无疑问记录</td><td class="num">-1</td></tr>
+      <tr class="neg"><td>阅读</td><td>阅读断更</td><td>当天未达 20 分钟阅读</td><td class="num">-1</td></tr>
+      <tr class="neg"><td>思考</td><td>怠于思考</td><td>听讲走神 / 不动笔 / 等答案</td><td class="num">-2</td></tr>
+      <tr class="neg"><td>思考</td><td>反复不通</td><td>同类题讲过 3 次仍同样错</td><td class="num">-1</td></tr>
+      <tr class="neg"><td>态度</td><td>态度敷衍</td><td>趴桌 / 抗拒 / 应付了事</td><td class="num">-2</td></tr>
+      <tr class="neg"><td>状态</td><td>状态崩盘</td><td>状态体检连续 3 天 < 2 项达标，先调状态不加练</td><td class="num">-3</td></tr>
+      <tr class="neg"><td>红线</td><td>顶撞辱骂</td><td>顶撞教练 / 辱骂同伴，需道歉闭环</td><td class="num">-5</td></tr>
+      <tr class="neg"><td>红线</td><td>弄虚作假</td><td>谎报 / 篡改记录 / 找人代做，二次触发停营 1 日</td><td class="num">-10</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="legend">
+    <i><span class="dot" style="background:var(--green)"></span>加分</i>
+    <i><span class="dot" style="background:var(--red)"></span>扣当天</i>
+    <i><span class="dot" style="background:var(--orange)"></span>红线</i>
+    <i>三处特殊处理：「番茄中断」不直接扣分，只本番茄作废，避免双重打击；「错不再犯」只奖不扣；「顶撞 / 弄虚作假」是底线，做到是本分、不设奖励。</i>
+  </div>
+</section>
+
+<section id="levels">
+  <h2>五、成长等级 L0~L5 <span class="tag">与运营手册同源</span></h2>
+  <p class="lead">等级与《积分与成长值体系 V2》完全一致——六大荣誉称号、同一套阈值、同一套升级铁律，完整闭环，不是另起炉灶。成长值<b>只升不降</b>，代表孩子走过的每一步。</p>
+
+  <div class="levels">
+    <div class="level lv0">
+      <div class="lv-head"><b>L0 · 启航者</b><span>0 ~ 99</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>未启动 / 被动学
+        <div class="thr">新入营默认起点，无门槛、无特权。首个有效番茄就能起步。</div>
+      </div>
+    </div>
+    <div class="level lv1">
+      <div class="lv-head"><b>L1 · 探索者</b><span>100 ~ 399</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>外驱开始动
+        <div class="lv-thr"><span>① 首次完成 1 个有效番茄</span><span>② 每日复盘连续填满 3 天</span></div>
+        <div class="thr">解锁：🌱 破土者勋章 + 神秘小礼包</div>
+      </div>
+    </div>
+    <div class="level lv2">
+      <div class="lv-head"><b>L2 · 笃行者</b><span>400 ~ 999</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>套路化执行，习惯成型
+        <div class="lv-thr"><span>① 连续 7 天复盘 + 作业 + 错题闭环达标</span><span>② 错题贴标签 + 重算成为日常</span></div>
+        <div class="thr">解锁：🔥 点火者 + 🎓 结业者勋章 + 神秘中礼包</div>
+      </div>
+    </div>
+    <div class="level lv3">
+      <div class="lv-head"><b>L3 · 跃迁者</b><span>1000 ~ 1899</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>无需提醒自驱
+        <div class="lv-thr"><span>① 连续 15 天闭环达标</span><span>② 触发过 1 次「迈向卓越」</span><span>③ 能独立写下周计划</span></div>
+        <div class="thr">解锁：🛡️ 坚守者勋章 + 神秘大礼包</div>
+      </div>
+    </div>
+    <div class="level lv4">
+      <div class="lv-head"><b>L4 · 卓越者</b><span>1900 ~ 3699</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>主动找目标，内驱成型
+        <div class="lv-thr"><span>① 连续 30 天闭环达标</span><span>② 单项指标进步 5 分 / 5%</span><span>③ 至少 1 次费曼输出同伴听懂</span></div>
+        <div class="thr">解锁：⚡ 精进者勋章 + 神秘特大礼包</div>
+      </div>
+    </div>
+    <div class="level lv5">
+      <div class="lv-head"><b>L5 · 至善者</b><span>≥ 3700</span></div>
+      <div class="lv-body">
+        <b>心理位置：</b>接得上意义，能带同伴
+        <div class="lv-thr"><span>① 半年综合指标不退步</span><span>② 控分达成（6 个月不退步）</span><span>③ 能带同伴 / 输出方法论 / 写出个人学习宣言</span></div>
+        <div class="thr">解锁：💎 控分王 + 🏆 顺行者勋章 + 神秘豪华礼包</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">升级三铁律（照搬手册，一条不少）</h3>
+    <p style="margin:6px 0"><b>①</b> 成长值达阈是必要条件，不是充分条件——只刷分不够；<b>②</b> 该等级「行为标志」全部勾选才升级；<b>③</b> 升级仪式在<b>月度复盘日</b>当众授勋，仪式感拉满。</p>
+    <p style="margin:6px 0"><b>特权保鲜：</b>等级只升不降，但「神秘礼包档次」需每月保持 ≥ 20 天闭环达标才持续享受；连续 2 个月不达标 → 礼包降回上一档 1 个月（不退级、不收勋章），达标后自动恢复。</p>
+    <p style="margin:6px 0"><b>升级节奏参考</b>（按每天 5~10 积分估算）：启航 → 探索约 2~3 周；探索 → 笃行约 2 个月；笃行 → 跃迁约 4~5 个月；跃迁 → 卓越约 8~9 个月；卓越 → 至善约 1 年半。</p>
+  </div>
+</section>
+
+<section id="badges">
+  <h2>六、勋章墙 <span class="tag">17 枚</span></h2>
+  <p class="lead">勋章 ≠ 积分：是永久荣誉，不可兑换、不可扣减。分两类——<b>里程碑勋章</b>（走到节点就发，7 枚）+ <b>过程之星勋章</b>（养成行为就发，10 枚，可重复盖戳）。</p>
+  <h3>里程碑勋章 · 7 枚</h3>
+  <div class="badges">
+    <div class="badge-card"><span class="icon">🌱</span><b>破土者</b><span>首次完成 1 个有效番茄</span></div>
+    <div class="badge-card"><span class="icon">🔥</span><b>点火者</b><span>连续 7 天闭环达标</span></div>
+    <div class="badge-card"><span class="icon">🎓</span><b>结业者</b><span>一期集训达标结业</span></div>
+    <div class="badge-card"><span class="icon">🛡️</span><b>坚守者</b><span>连续 15 天闭环达标</span></div>
+    <div class="badge-card"><span class="icon">⚡</span><b>精进者</b><span>连续 30 天闭环达标</span></div>
+    <div class="badge-card"><span class="icon">💎</span><b>控分王</b><span>半年不退步，控分奖学金</span></div>
+    <div class="badge-card"><span class="icon">🏆</span><b>顺行者</b><span>年度积分榜 Top 3</span></div>
+  </div>
+  <h3>过程之星 · 10 枚（可累计盖戳，如「专注之星 ×3」）</h3>
+  <div class="badges">
+    <div class="badge-card"><span class="icon">🪞</span><b>复盘之星</b><span>每日复盘连续 7 天</span></div>
+    <div class="badge-card"><span class="icon">🎯</span><b>专注之星</b><span>累计 50 个有效番茄</span></div>
+    <div class="badge-card"><span class="icon">🎤</span><b>费曼之星</b><span>累计 5 次费曼输出</span></div>
+    <div class="badge-card"><span class="icon">💡</span><b>提问之星</b><span>累计 10 次追根究底</span></div>
+    <div class="badge-card"><span class="icon">🔁</span><b>错题之星</b><span>累计 20 道五步闭环</span></div>
+    <div class="badge-card"><span class="icon">📖</span><b>阅读之星</b><span>连续 14 天阅读 ≥ 20 分钟</span></div>
+    <div class="badge-card"><span class="icon">🤝</span><b>协作之星</b><span>累计 10 次帮助同伴</span></div>
+    <div class="badge-card"><span class="icon">🌅</span><b>早起之星</b><span>连续 7 天准时无迟到</span></div>
+    <div class="badge-card"><span class="icon">🧘</span><b>状态之星</b><span>连续 10 天状态达标</span></div>
+    <div class="badge-card"><span class="icon">✍️</span><b>书写之星</b><span>连续 14 天书写工整</span></div>
+  </div>
+</section>
+
+<section id="redeem">
+  <h2>七、兑换商店 <span class="tag">每月 1 次</span></h2>
+  <p class="lead">10 积分 = 1 元。孩子一个月认真做下来约攒 100~250 积分（= 10~25 元），可当月兑换，也可跨月攒大件。所有档位攒够就兑，不受等级限制。</p>
+  <div class="redeem">
+    <div class="r-item"><span class="price">30 分 <small>= 3 元</small></span><b>酸奶 / 时令水果 / 小零食</b><span>健康补给，随时可换</span></div>
+    <div class="r-item"><span class="price">50 分 <small>= 5 元</small></span><b>一支好笔 / 盲盒 / 贴纸套装</b><span>小惊喜，攒两天就到手</span></div>
+    <div class="r-item"><span class="price">80 分 <small>= 8 元</small></span><b>精美笔记本 / 小玩具</b><span>学习装备升级</span></div>
+    <div class="r-item"><span class="price">120 分 <small>= 12 元</small></span><b>课外好书一本</b><span>教练精选书单，读后笔记可额外加分</span></div>
+    <div class="r-item"><span class="price">150 分 <small>= 15 元</small></span><b>零食大礼包 / 迷你积木</b><span>成就感小犒赏</span></div>
+    <div class="r-item"><span class="price">200 分 <small>= 20 元</small></span><b>主题文具礼盒 / 棋类桌游</b><span>可以带回家慢慢玩</span></div>
+    <div class="r-item"><span class="price">300 分 <small>= 30 元</small></span><b>精装书 / 电影票一张</b><span>和教练或家人一起看</span></div>
+    <div class="r-item"><span class="price">400 分 <small>= 40 元</small></span><b>和教练 1v1 非学习对话 30 分钟</b><span>聊兴趣、聊未来，不谈学习</span></div>
+    <div class="r-item"><span class="price">500 分 <small>= 50 元</small></span><b>现金红包 50 元</b><span>自己支配，月底结算</span></div>
+    <div class="r-item"><span class="price">800 分 <small>= 80 元</small></span><b>和教练 + 家长「未来饭局」</b><span>聊 3 年后要成为什么样的人</span></div>
+    <div class="r-item"><span class="price">1000 分 <small>= 100 元</small></span><b>现金红包 100 元</b><span>月度学霸级别</span></div>
+  </div>
+  <div class="note">
+    <b>兑换规则：</b>每月最后一周集中兑换、次月发放；可跨月累计、积分不清零；兑换扣的是「积分」，不影响「成长值 / 等级」。现金红包单次不超过 100 元。心愿大件（乐高 / 耳机等）可提前和教练约定目标分，攒到就换。
+  </div>
+</section>
+
+<section id="rhythm">
+  <h2>八、结算节奏 <span class="tag">闭环执行</span></h2>
+  <p class="lead">数据可以少，但一定要有效执行。每天算账、每周复盘、每月兑奖升级，一个都不落。</p>
+  <div class="steps">
+    <div class="step"><div class="when">每天</div><div class="what"><b>当日清算</b>每晚复盘：孩子先说出今天做得最好的 1 件事（练觉察、练肯定），教练再给出今日得分（加分 − 扣分）和一句话反馈：今天哪笔分最值得。</div></div>
+    <div class="step"><div class="when">每周</div><div class="what"><b>周度复盘</b>周日复盘中算周榜、定下周目标，发 1 张免扣券；家长看到的是个人数据，不排名。</div></div>
+    <div class="step"><div class="when">每月</div><div class="what"><b>月度结算</b>月末集中兑换 + 积分榜公示 + 升级仪式判定（当众授勋）+ 勋章颁发。</div></div>
+    <div class="step"><div class="when">里程碑</div><div class="what"><b>节点兑现</b>连续 7 / 15 / 30 天达标、半年不退步，自动结算里程碑分并走授勋仪式。</div></div>
+  </div>
+</section>
+
+<footer>
+  <b>顺·行者学苑</b> · 成长营激励系统 · 让努力可视化，让成长有凭据，让孩子相信自己真的在变强。
+</footer>
+
+</main>
+</div>
+<script>
+document.querySelectorAll('nav.toc a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href');
+    if(id && id.charAt(0)==='#'){
+      var t = document.querySelector(id);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+  });
+});
+</script>
+</body>
+</html>
