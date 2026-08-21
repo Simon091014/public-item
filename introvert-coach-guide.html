@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>内向型教练 · 初中生引导指南 | 顺·行者学苑</title>
+<style>
+:root{
+  --bg:#F7F8FF;
+  --card:#FFFFFF;
+  --ink:#1F2433;
+  --muted:#5A6174;
+  --primary:#5B6CFF;
+  --primary-soft:#EEF0FF;
+  --yellow:#FFD166;
+  --yellow-soft:#FFF6DF;
+  --pink:#FF7AB6;
+  --pink-soft:#FFEDF5;
+  --green:#55C59D;
+  --green-soft:#E8F8F1;
+  --red:#E2555A;
+  --red-soft:#FDEBEC;
+  --orange:#F2994A;
+  --orange-soft:#FDF1E4;
+  --line:#E5E8F5;
+  --radius:14px;
+  --shadow:0 4px 18px rgba(91,108,255,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Inter","Nunito","Avenir Rounded","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:15px;
+}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+a{color:var(--primary);overflow-wrap:anywhere}
+header.hero{
+  background:linear-gradient(135deg,#5B6CFF 0%,#7A86FF 55%,#9B6BFF 100%);
+  color:#fff;border-radius:22px;padding:36px 32px 30px;margin-bottom:22px;
+  position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-40px;top:-60px;width:240px;height:240px;
+  background:rgba(255,255,255,.12);border-radius:50%;
+}
+.hero h1{margin:0 0 8px;font-size:27px;letter-spacing:.5px}
+.hero p{margin:0;font-size:15px;opacity:.95;max-width:720px}
+.hero .badge{
+  display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+  padding:3px 12px;border-radius:999px;font-size:13px;margin-top:12px;
+}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 26px}
+.kpi{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;border:1px solid var(--line)}
+.kpi b{display:block;font-size:21px;color:var(--primary);margin-bottom:2px}
+.kpi span{font-size:13px;color:var(--muted)}
+nav.toc{
+  position:sticky;top:10px;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:var(--radius);padding:10px 14px;margin-bottom:26px;
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+nav.toc a{
+  text-decoration:none;font-size:13.5px;padding:5px 11px;border-radius:999px;color:var(--ink);
+  background:#F2F3F7;transition:background .15s,color .15s;
+}
+nav.toc a:hover,nav.toc a:focus{background:var(--primary);color:#fff;outline:none}
+a:focus-visible,nav.toc a:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+section{margin:0 0 36px}
+h2{
+  font-size:21px;margin:0 0 14px;padding:8px 0 8px 14px;border-left:6px solid var(--primary);
+  display:flex;align-items:center;gap:10px;
+}
+h2 .tag{font-size:12px;background:var(--primary-soft);color:var(--primary);padding:2px 10px;border-radius:999px;font-weight:600;white-space:nowrap}
+h3{font-size:16.5px;margin:22px 0 10px;color:var(--ink)}
+.lead{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px}
+.note{
+  background:var(--yellow-soft);border:1px solid #F5D78E;border-radius:12px;padding:13px 17px;
+  font-size:14px;margin:14px 0;color:#6B5310;
+}
+.note b{color:#8a6d12}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.strength{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.strength b{display:block;font-size:15.5px;margin-bottom:5px}
+.strength b .ico{margin-right:6px}
+.strength p{margin:0;font-size:13.5px;color:var(--muted)}
+.trap{background:var(--red-soft);border:1px solid #F5C2C5;border-radius:var(--radius);padding:14px 17px;margin-bottom:10px}
+.trap b{color:#C43D42;display:block;margin-bottom:3px}
+.trap p{margin:0;font-size:13.5px;color:#8A3A3E}
+.banner{
+  background:linear-gradient(135deg,#5B6CFF,#7A86FF);color:#fff;border-radius:var(--radius);
+  padding:16px 20px;margin:16px 0;font-size:15px;
+}
+.banner b{font-size:16px}
+.acts{display:grid;gap:10px}
+.act{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 17px;box-shadow:var(--shadow);display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.act .n{
+  width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.act b{display:block;margin-bottom:2px}
+.act p{margin:0;font-size:13.5px;color:var(--muted)}
+.bad-list{display:grid;gap:8px}
+.bad-item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 15px;font-size:14px;border-left:4px solid var(--red)}
+.bad-item b{color:#C43D42}
+.ptable{display:grid;gap:12px}
+.prow{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:16px 18px;border-left:6px solid var(--green);
+}
+.prow.pink{border-left-color:var(--pink)}
+.prow .phead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.prow .phead b{font-size:16px}
+.prow .ptag{font-size:11.5px;background:var(--primary-soft);color:var(--primary);padding:1px 9px;border-radius:999px}
+.prow .pneed{font-size:13.5px;color:var(--muted);margin-bottom:8px}
+.prow .pa{font-size:13.5px;margin-bottom:6px}
+.prow .pa b{color:var(--green)}
+.prow .pxin{font-size:14px;background:var(--yellow-soft);border-radius:8px;padding:6px 12px;color:#6B5310;margin-top:4px}
+.formula{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px 22px;margin-bottom:14px;text-align:center;font-size:19px;font-weight:800;color:var(--primary);
+}
+.frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.fbox{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.fbox b{display:block;font-size:15px;margin-bottom:4px}
+.fbox p{margin:0;font-size:13px;color:var(--muted)}
+.steps{counter-reset:st;display:grid;gap:10px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 17px;box-shadow:var(--shadow);position:relative;padding-left:52px}
+.step::before{
+  counter-increment:st;content:counter(st);position:absolute;left:14px;top:13px;
+  width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+}
+.step b{display:block;margin-bottom:2px}
+.step p{margin:0;font-size:13.5px;color:var(--muted)}
+.check{display:grid;gap:8px;margin-top:6px}
+.chk{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 15px;font-size:14px}
+.chk b{color:var(--green)}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center}
+footer b{color:var(--primary)}
+@media print{
+  nav.toc,.kpis{display:none}
+  body{background:#fff}
+  .card,.strength,.trap,.act,.prow,.fbox,.step,.chk,.bad-item{box-shadow:none}
+  section{break-inside:avoid-page}
+  a{color:inherit}
+}
+@media (max-width:640px){
+  .hero h1{font-size:22px}
+  body{font-size:14.5px}
+  .act{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main id="main">
+<header class="hero">
+  <span class="badge">顺·行者学苑 · 内部工具</span>
+  <h1>内向型教练 · 初中生引导指南</h1>
+  <p>你不必假装外向。孩子喜欢你，从来不是因为教练多热闹，而是因为——跟他在一起时，他觉得自己被听懂、被看见、在变好。这本指南，就是把你内向的优势，变成孩子愿意跟着你学的理由。</p>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>4 大优势</b><span>内向教练的武器库</span></div>
+  <div class="kpi"><b>6 个动作</b><span>对任何孩子都管用</span></div>
+  <div class="kpi"><b>10 类学生</b><span>画像 × 你的打法</span></div>
+  <div class="kpi"><b>1 份脚本</b><span>第一次见面直接用</span></div>
+</div>
+
+<nav class="toc" aria-label="页面导航">
+  <a href="#self">一、先看清自己</a>
+  <a href="#base">二、6 个底层动作</a>
+  <a href="#girl">三、内向女生怎么带</a>
+  <a href="#types">四、10 类学生打法</a>
+  <a href="#why">五、被喜欢的机制</a>
+  <a href="#plan">六、落地清单</a>
+</nav>
+
+<section id="self">
+  <h2>一、先看清自己 <span class="tag">你的武器库与陷阱</span></h2>
+  <p class="lead">内向不是短板，是一种风格。先承认这一点，你才能把力气用在刀刃上：不用去模仿外向教练，而是把自己的天赋打磨成别人学不走的能力。</p>
+  <h3>你的 4 大优势</h3>
+  <div class="grid2">
+    <div class="strength"><b><span class="ico">👂</span>倾听力</b><p>孩子说一句，你能接住三句背后的情绪。初中生最缺的不是被教，而是被听。你天生能安静地听完，这本身就是稀缺资源。</p></div>
+    <div class="strength"><b><span class="ico">🫂</span>共情力</b><p>内向的人对他人情绪更敏感。孩子今天"不对劲"，你能第一时间察觉——这种直觉，外向教练未必有。</p></div>
+    <div class="strength"><b><span class="ico">🧩</span>结构力</b><p>你习惯想清楚了再开口，给的反馈天然有逻辑。孩子听得懂、记得住、能照做——这比"口才好"更值钱。</p></div>
+    <div class="strength"><b><span class="ico">🪨</span>稳定力</b><p>你不靠临时发挥和表演，长期稳定的陪伴本身就是安全感。越到初三、越到青春期，孩子越吃这套。</p></div>
+  </div>
+  <h3 style="margin-top:22px">3 个要绕开的陷阱</h3>
+  <div class="trap"><b>① 启动难</b><p>不知道如何开口、怕冷场。对策：用"结构开场"代替"即兴开场"——第六部分有一份 20 分钟脚本，照着走就不会冷场。</p></div>
+  <div class="trap"><b>② 过度内耗</b><p>孩子一没反应就怀疑自己。对策：把"孩子沉默"重新定义为"他在思考"，而不是"我失败了"。沉默是你的同盟，不是敌人。</p></div>
+  <div class="trap"><b>③ 反馈太少</b><p>心里觉得他做得好，嘴上没说出来。对策：把"说出肯定"设为硬指标——每节课至少 3 次具体肯定，写进你自己的复盘。</p></div>
+  <div class="banner"><b>一句话定位：</b>我不是热闹的主持人，我是安静的摆渡人——我不负责全场热闹，我只负责把每个孩子稳稳送到下一站。</div>
+</section>
+
+<section id="base">
+  <h2>二、让任何孩子愿意跟你学的 6 个底层动作 <span class="tag">先于学生类型</span></h2>
+  <p class="lead">不管孩子是什么性格，下面 6 条都成立。先做到这 6 条，再谈分类打法。</p>
+  <div class="acts">
+    <div class="act"><div class="n">1</div><div><b>关系先于教学</b><p>先让他喜欢"你这个人"，再谈喜欢"这门课"。第一节课不急着讲题，先花 10 分钟聊他这个人——名字的来历、爱好、最近开心或烦心的事。</p></div></div>
+    <div class="act"><div class="n">2</div><div><b>先接情绪，再讲道理</b><p>孩子带着情绪时，道理一句都进不去。顺序永远是：看见情绪 → 接住它 → 再谈问题。"你刚被老师批评了，挺委屈吧？"比一万句"你应该……"有效。</p></div></div>
+    <div class="act"><div class="n">3</div><div><b>用提问代替讲</b><p>你的苏格拉底提问法是王牌。孩子答不上来，不是甩答案，是给台阶："那我们退一步，第一步先做什么？"让他自己走到答案门口。</p></div></div>
+    <div class="act"><div class="n">4</div><div><b>记得细节</b><p>上周他说过喜欢哪支球队、怕哪门课、生日是哪天——下次见面自然提起。内向者天生记性好，这是别人学不走的"被重视感"。</p></div></div>
+    <div class="act"><div class="n">5</div><div><b>给选择权，不当众批评</b><p>批评永远私下说，表扬可以当众说。孩子犯错时给选择："你是现在改，还是课后我们一起改？"让他手里握着方向盘。</p></div></div>
+    <div class="act"><div class="n">6</div><div><b>稳定可预期</b><p>固定时间、固定流程、承诺了就必须兑现。孩子（尤其内向的）最怕教练心血来潮。你越稳定，他越敢在你面前放松——放松了，才会真的学进去。</p></div></div>
+  </div>
+</section>
+
+<section id="girl">
+  <h2>三、重点：内向的女学生怎么带 <span class="tag">先讲明白为什么是你</span></h2>
+  <div class="note"><b>为什么你是她的理想教练：</b>内向对内向，天然同频。她怕的不是慢，是被逼。你不需要假装外向去"带节奏"，你只需要做一个安静、稳当、可信赖的大人——这正是内向女生最想要的那种教练。你越做自己，她越放松。</div>
+  <h3>她真正需要的 5 件事</h3>
+  <div class="frow">
+    <div class="fbox"><b>被看见</b><p>指出具体进步，而非泛泛的"你真棒"——具体到行为，她才信。</p></div>
+    <div class="fbox"><b>被接住</b><p>情绪有人接、不评判、不急着纠正。</p></div>
+    <div class="fbox"><b>不被催</b><p>允许她有自己回答和消化的节奏。</p></div>
+    <div class="fbox"><b>安全</b><p>边界清晰、关系干净透明，她才会放心。</p></div>
+    <div class="fbox"><b>有盼头</b><p>有向往的榜样和方向，知道往哪走。</p></div>
+  </div>
+  <h3>8 个具体动作</h3>
+  <div class="acts">
+    <div class="act"><div class="n">1</div><div><b>慢启动，不逼问</b><p>开场别问"今天学得怎么样"这种大问题，换成"今天有没有哪道题让你多看了一眼？"她答不上来，你先示范一次，把压力卸掉。</p></div></div>
+    <div class="act"><div class="n">2</div><div><b>用书写代替口头</b><p>内向女生口头表达压力大。允许她先写、先画、再讨论——你的复盘本、错题标签，就是现成的"低压力表达通道"。写出来的她，比说出来的她更敢说。</p></div></div>
+    <div class="act"><div class="n">3</div><div><b>精准看见</b><p>不说"你真棒"，说"你今天把『卡在哪一步』写清楚了，这个动作很多孩子做不到。"肯定到具体行为，她才会真的相信自己进步了。</p></div></div>
+    <div class="act"><div class="n">4</div><div><b>情绪命名</b><p>她沉默、皱眉、叹气时，帮她把情绪说出来："你是不是觉得怎么都做不对，有点烦？"被命名 = 被接住。她不需要你解决，需要你知道。</p></div></div>
+    <div class="act"><div class="n">5</div><div><b>守住边界</b><p>男教练 × 初中女生：一对一尽量在开放空间或家长可见的环境；不长时间密闭单独相处；辅导内容对家长透明；不添加学习之外的多余联系。距离不是冷漠，是专业，也是让她和家长都安心的安全感来源。</p></div></div>
+    <div class="act"><div class="n">6</div><div><b>小步确认</b><p>把"提高数学"拆成"今天只把这三道错题重新做对"。每完成一小步就给证据："三道对了两道，比昨天多一道。"进步要看得见，她才敢继续。</p></div></div>
+    <div class="act"><div class="n">7</div><div><b>给榜样</b><p>讲学姐逆袭的故事、推荐优秀女性的传记或纪录片。榜样比道理更有力量——她要的不是"你该努力"，是"我也想成为那样的人"。</p></div></div>
+    <div class="act"><div class="n">8</div><div><b>稳定陪伴</b><p>固定每周同一天、同一时间见她。内向孩子最怕"今天换个教练、明天换间房"。你的稳定本身就是安全感，时间越长越值钱。</p></div></div>
+  </div>
+  <h3>千万别踩的 5 个坑</h3>
+  <div class="bad-list">
+    <div class="bad-item"><b>✗ 逼她当众发言、点名展示</b>——对内向孩子是公开处刑，一次就够她怕你。</div>
+    <div class="bad-item"><b>✗ 沉默时逼问"你怎么不说话？"</b>——越逼越缩，她只会把嘴闭得更紧。</div>
+    <div class="bad-item"><b>✗ 用"你看别人都能"对比</b>——对她是杀伤力最大的一句话。</div>
+    <div class="bad-item"><b>✗ 急着给答案</b>——她要的是被理解，不是被替代。</div>
+    <div class="bad-item"><b>✗ 情绪上头时说教</b>——她正难受时，先让她平复，明天再谈，效果翻倍。</div>
+  </div>
+</section>
+
+<section id="types">
+  <h2>四、10 类初中生画像 × 你的打法 <span class="tag">对症下药</span></h2>
+  <p class="lead">先判断孩子属于哪一类（往往混合，以主导的那类为主），再用对应的打法。同一句话，对不同孩子，效果完全相反。</p>
+  <div class="ptable">
+
+    <div class="prow pink">
+      <div class="phead"><b>① 内向安静型</b><span class="ptag">含内向女生 · 看第三节</span></div>
+      <div class="pneed"><b>画像：</b>话少、慢热、心里有数、怕被点名；成绩未必差，但容易被忽略。</div>
+      <div class="pa"><b>他要的是：</b>安全、被看见、节奏不被催。</div>
+      <div class="pa"><b>你的 3 招：</b>① 用书写代替口头让他表达；② 每节课给他 1 次"精准看见"；③ 固定时间稳定陪伴，绝不临时换人。</div>
+      <div class="pxin">心法：你不说话我也知道你在线，我陪着你慢慢来。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>② 外向好动型</b></div>
+      <div class="pneed"><b>画像：</b>坐不住、爱接话、注意力短；不是坏，是能量太多没处放。</div>
+      <div class="pa"><b>他要的是：</b>被认可、有挑战、能"动起来"。</div>
+      <div class="pa"><b>你的 3 招：</b>① 把番茄钟变成闯关游戏，一关一关过；② 让他讲给你听（费曼法），把好动变成输出；③ 给"挑战题"而不是"练习题"，给点刺激。</div>
+      <div class="pxin">心法：你不是话多，是能量多，我帮你把能量对准目标。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>③ 敏感玻璃心型</b></div>
+      <div class="pneed"><b>画像：</b>一句重话就崩、过度自责、怕输；哭不是矫情，是情绪通道比常人宽。</div>
+      <div class="pa"><b>他要的是：</b>被保护、被确认、失败不被惩罚。</div>
+      <div class="pa"><b>你的 3 招：</b>① 先接情绪再谈事，永远；② 把"错了"说成"发现了一个改进点"；③ 表扬努力过程，而非只看结果。</div>
+      <div class="pxin">心法：错题不是审判书，是藏宝图。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>④ 好胜竞赛型</b></div>
+      <div class="pneed"><b>画像：</b>要赢、要排名、输了不服气；好胜是燃料，用错方向就是内耗。</div>
+      <div class="pa"><b>他要的是：</b>明确的对手/目标、被认可实力。</div>
+      <div class="pa"><b>你的 3 招：</b>① 给他"和昨天的自己比"的进度条；② 设置可挑战的里程碑，达到就兑现；③ 赢了表扬方法而非天赋——"你这次的复盘方法起作用了"。</div>
+      <div class="pxin">心法：最大的对手永远是昨天的自己。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑤ 拖延逃避型</b></div>
+      <div class="pneed"><b>画像：</b>能拖就拖、畏难、启动困难；不是懒，是怕"开始"那个门槛。</div>
+      <div class="pa"><b>他要的是：</b>小到不可能失败的第一步、外部结构兜底。</div>
+      <div class="pa"><b>你的 3 招：</b>① 把任务切到"5 分钟就能启动"的颗粒度；② 约定"先做 1 道题就休息"；③ 用你的复盘闭环盯住，不做就温和追问。</div>
+      <div class="pxin">心法：不是懒，是怕开始，那就把开始变小。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑥ 话痨发散型</b></div>
+      <div class="pneed"><b>画像：</b>思维跳跃、讲不到重点、但很活跃；表达欲强，缺的是聚焦。</div>
+      <div class="pa"><b>他要的是：</b>被倾听、学会把话说到点上。</div>
+      <div class="pa"><b>你的 3 招：</b>① 先让他说完，别打断（满足表达欲）；② 用"所以你想说的核心是？"帮他收束；③ 费曼输出训练，逼他把发散整理成结构。</div>
+      <div class="pxin">心法：你不乱，是信息太多，我帮你搭架子。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑦ 叛逆对抗型</b></div>
+      <div class="pneed"><b>画像：</b>顶嘴、不服管、警惕权威；他不是针对你，是警惕一切"被命令"。</div>
+      <div class="pa"><b>他要的是：</b>被尊重、有选择权、不被控制。</div>
+      <div class="pa"><b>你的 3 招：</b>① 不当场硬碰，给他台阶；② 给选择权："你选 A 还是 B？"；③ 适当示弱："这个我拿不准，你怎么看？"——放下权威，他才放下戒备。约法三章后照章办事，不临时加码。</div>
+      <div class="pxin">心法：他反抗的不是你，是"被命令"，那把方向盘给他一部分。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑧ 佛系躺平型</b></div>
+      <div class="pneed"><b>画像：</b>无所谓、不争不抢、动力不足；不是没火苗，是没人帮他点火。</div>
+      <div class="pa"><b>他要的是：</b>意义感、微小成就、被需要。</div>
+      <div class="pa"><b>你的 3 招：</b>① 找一件他真心喜欢的事作切入点，先激活；② 制造"我能行"的小胜利，攒自信；③ 告诉他"这个班需要你"——让他感到被需要。</div>
+      <div class="pxin">心法：不是没有火苗，是没人帮他点火。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑨ 完美主义型</b></div>
+      <div class="pneed"><b>画像：</b>怕错、反复检查、容错率极低；好学生，但内耗重。</div>
+      <div class="pa"><b>他要的是：</b>被允许犯错、过程被认可。</div>
+      <div class="pa"><b>你的 3 招：</b>① 主动分享你犯过的错，让他知道"错是常态"；② 把错误标准化——纳入错题闭环的日常流程，不放大；③ 反复强调"完成大于完美"。</div>
+      <div class="pxin">心法：你不必完美，你只需要完整地走完每一步。</div>
+    </div>
+
+    <div class="prow">
+      <div class="phead"><b>⑩ 依赖索取型</b></div>
+      <div class="pneed"><b>画像：</b>总想直接要答案、不愿自己动脑；习惯了被喂，独立能力弱。</div>
+      <div class="pa"><b>他要的是：</b>边界、被引导着自己解决。</div>
+      <div class="pa"><b>你的 3 招：</b>① 坚守规则："先讲你的思路，我再帮你"；② 苏格拉底式反问到底；③ 每当他独立想通一次，就大力肯定"这是你自己搞定的"。</div>
+      <div class="pxin">心法：我给的不是答案，是你自己找到答案的路径。</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="why">
+  <h2>五、孩子"喜欢跟着你"的底层机制 <span class="tag">不是靠有趣</span></h2>
+  <div class="formula">喜欢 = 安全感 × 价值感 × 成就感 × 期待感</div>
+  <div class="frow">
+    <div class="fbox"><b>🛡️ 安全感</b><p>在你面前不会被否定、被嘲笑。内向教练的天赋：倾听、稳定、不评判。</p></div>
+    <div class="fbox"><b>💎 价值感</b><p>你让他觉得"我很重要、我被看见"。靠：记得细节、精准反馈。</p></div>
+    <div class="fbox"><b>🏆 成就感</b><p>跟着你能"赢"、能看到自己进步。靠：复盘闭环、进度条、里程碑兑现。</p></div>
+    <div class="fbox"><b>🌟 期待感</b><p>每次来都有盼头。靠：稳定承诺、每次留下的一个小悬念。</p></div>
+  </div>
+  <div class="note"><b>对你最有利的结论：</b>内向教练天然最擅长前两项（安全感 + 价值感）——而这恰恰是最稀缺、最留得住孩子的两项。后两项靠你已有的整套结构（复盘、里程碑、激励系统）补足。别人靠热闹拉客，你靠深度留人，越到高年级越明显。</div>
+  <div class="banner"><b>记住一句话：</b>孩子喜欢你不是因为你有趣，而是因为跟你在一起时，他觉得自己变好了。这才是能撑到中考的真正喜欢。</div>
+</section>
+
+<section id="plan">
+  <h2>六、落地清单 <span class="tag">照着做就行</span></h2>
+  <h3>第一次见面 · 20 分钟脚本（内向教练版）</h3>
+  <div class="steps">
+    <div class="step"><b>0-5 分钟：不聊学习，聊他这个人</b><p>名字的来历、爱好、最近开心或烦心的事。目标只有一个：让他放松，知道"这个人不是来审判我的"。</p></div>
+    <div class="step"><b>5-10 分钟：只问不评</b><p>"你自己觉得这门课最大的难处在哪？"——听，不评判，只复述确认："你是说，一看到大题就不知道从哪下手，对吗？"</p></div>
+    <div class="step"><b>10-15 分钟：给一个小挑战</b><p>一题或一页，让他做成一件小事。目标：第一次见面就制造"我能行"。</p></div>
+    <div class="step"><b>15-20 分钟：约法三章 + 定下次</b><p>"以后每周这个时间，都是我们见面，我都在。"——把承诺说出口，把期待种下去。</p></div>
+    <div class="step"><b>结尾一句话：</b><p>"今天你让我看到一个会思考的孩子，下周见。"——具体、真诚、不煽情，内向孩子吃这套。</p></div>
+  </div>
+  <h3>每周固定节奏</h3>
+  <div class="frow">
+    <div class="fbox"><b>周一至六</b><p>每日复盘，你给 1 句反馈（一句话点出今天最值得的进步）。</p></div>
+    <div class="fbox"><b>周日</b><p>周复盘 + 定下周目标 + 至少 1 次具体肯定。</p></div>
+    <div class="fbox"><b>每月</b><p>里程碑结算 + 激励系统授勋 / 兑换，兑现承诺。</p></div>
+  </div>
+  <h3>教练自查清单（每周过一遍）</h3>
+  <div class="check">
+    <div class="chk"><b>[ ]</b> 这周我至少给了 3 次具体肯定（说行为，不说"真棒"）？</div>
+    <div class="chk"><b>[ ]</b> 这周我有没有做到一次"先接情绪，再讲道理"？</div>
+    <div class="chk"><b>[ ]</b> 我记住并主动提起孩子的某个细节了吗？</div>
+    <div class="chk"><b>[ ]</b> 这周我有没有哪句话让孩子沉默了？下次怎么说更好？</div>
+    <div class="chk"><b>[ ]</b> 这周孩子在我面前，是更放松了，还是更紧绷了？</div>
+  </div>
+</section>
+
+<footer>
+  <b>顺·行者学苑</b> · 内向型教练引导指南 · 你不是话少，你是把话留给真正重要的人 · 内部工具，持续迭代
+</footer>
+
+</main>
+</div>
+<script>
+document.querySelectorAll('nav.toc a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href');
+    if(id && id.charAt(0)==='#'){
+      var t = document.querySelector(id);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+  });
+});
+</script>
+</body>
+</html>
